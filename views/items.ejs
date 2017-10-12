@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/style/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
   <link rel="stylesheet" href="assets/style/custom.css">
-  <title>Suppliers</title>
+  <title>items</title>
 </head>
 <body>
   <div class="container-cust">
@@ -17,22 +17,24 @@
       <tr>
         <th>ID</th>
         <th>NAME</th>
-        <th>KOTA</th>
+        <th>BRAND</th>
+        <th>CODE ITEM</th>
         <th>ACTIONS</th>
       </tr>
-      <% for(let data=0; data<data_SuppliersToEjs.length; data++){%>
+      <% for(let data=0; data<data_ItemsToEjs.length; data++){%>
       <tr>
-        <td><%=data_SuppliersToEjs[data].id%></td>
-        <td><%=data_SuppliersToEjs[data].name%></td>
-        <td><%=data_SuppliersToEjs[data].kota%></td>
+        <td><%=data_ItemsToEjs[data].id%></td>
+        <td><%=data_ItemsToEjs[data].name%></td>
+        <td><%=data_ItemsToEjs[data].brand%></td>
+        <td><%=data_ItemsToEjs[data].codeitem%></td>
         <td style="margin-left:-5px;">
-              <a class="button is-info is-outlined is-small" href='suppliers/edit/<%=data_SuppliersToEjs[data].id%>'>
+              <a class="button is-info is-outlined is-small" href='items/edit/<%=data_ItemsToEjs[data].id%>'>
               <span class="icon is-small">
                 <i class="fa fa-pencil"></i>
               </span>
               <span>Edit</span>
             </a>
-              <a onclick="myFunction()" class="button is-danger is-outlined is-small" href="suppliers/delete/<%=data_SuppliersToEjs[data].id%>">
+              <a onclick="myFunction()" class="button is-danger is-outlined is-small" href="items/delete/<%=data_ItemsToEjs[data].id%>">
               <span class="icon is-small">
                 <i class="fa fa-times"></i>
               </span>
@@ -44,7 +46,7 @@
     </table>
 
     <div style="text-align:left; margin-top:35px;">
-        <a class="button is-outlined" href='/suppliers/add'>add supplier</a>
+        <a class="button is-outlined" href='/items/add'>add Item</a>
       </div>
 
   </div>
