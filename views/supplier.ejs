@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Data Supplier</title>
+</head>
+
+<body>
+    <div id="main-table">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Kota</th>
+                <th>List Item</th>
+                <th>Add Item</th>
+                <th colspan="2">Action</th>
+            </tr>
+            <%dataSupplier.forEach(function(data){ %>
+                <tr>
+                    <td>
+                        <%= data.id%>
+                    </td>
+                    <td>
+                        <%= data.name%>
+                    </td>
+                    <td>
+                        <%= data.kota%>
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        <a href="/suppliers/edit/<%= data.id%>"> Edit</a>
+                        <a href="/suppliers/delete/<%= data.id%>">Delete</a>
+                    </td>
+                </tr>
+                <% })%>
+
+
+        </table>
+        <a href="/suppliers/add"> Add Suppliers</a>
+
+    </div>
+</body>
+
+</html>
