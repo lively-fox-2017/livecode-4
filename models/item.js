@@ -4,15 +4,15 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     brand: DataTypes.STRING,
     codeitem: DataTypes.STRING,
-    // codeitem: {
-    //     type: DataTypes.STRING,
-    //     validate: {
-    //         isIn: {
-    //             args: [/(HP|SW|LP)\d{4}/],
-    //             msg: "Code Item harus Unik!"
-    //         }
-    //     }
-    // },
+    codeitem: {
+        type: DataTypes.STRING,
+        validate: {
+            is: {
+                args: [/(HP|SW|LP)\d{4}/],
+                msg: "Code Item harus Unik!"
+            }
+        }
+    },
     createdAt: new Date(),
     updatedAt: new Date(),
     SupplierId: DataTypes.INTEGER
