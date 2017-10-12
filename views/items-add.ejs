@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>
+        Add Item
+    </title>
+</head>
+
+<body>
+    <div id="form"></div>
+    <%= message%>
+        <form action="/items/add" method="post">
+            Nama Barang:
+            <input name="name" /> <br>
+            <br>Brand :
+            <input name="brand" /> <br>
+            <br> Item Code :
+            <input name="codeitem" /> <br>
+            <br>
+            <input type="submit" value="Save">
+        </form>
+
+    </div>
+</body>
+
+</html>

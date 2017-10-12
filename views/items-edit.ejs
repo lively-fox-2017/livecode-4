@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <title>Item-Edit</title>
+</head>
+
+<body>
+    <div id="form-edit">
+        <%= message%>
+            <form action="/items/edit/<%=dataItem.id%>" method="post">
+                Nama :
+                <input name="name" type="text" value="<%=dataItem.name%>" /> <br>
+                <br> Brand :
+                <input name="brand" type="text" value="<%=dataItem.brand%>" /> <br>
+                <br> Item Code :
+                <input name="codeitem" type="text" value="<%=dataItem.codeitem%>" /> <br>
+                <br>
+
+                <input type="submit" value="Save">
+            </form>
+    </div>
+</body>
+
+</html>
