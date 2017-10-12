@@ -15,6 +15,7 @@
           <th>Nama</th>
           <th>Kota</th>
           <th>List Item</th>
+          <th>Add Item</th>
           <th>Opsi</th>
         </tr>
         <%suppliers.forEach((supplier, i)=>{%>
@@ -23,13 +24,14 @@
             <td><%=supplier.id%></td>
             <td><%=supplier.name%></td>
             <td><%=supplier.kota%></td>
-            <%if(supplier.Items){%>
-              <%supplier.Items.forEach((item, i)=>{%>
-                <td><%=i+1%>. <%=item.name%></td>
-              <%})%>
-            <%}else{%>
+            <%if(supplier.Items.length == 0){%>
               <td>No item yet</td>
+            <%}else{%>
+              <td><%supplier.Items.forEach((item, i)=>{%>
+                <%=i+1%>. <%=item.name%><br>
+                <%})%></td>
             <%}%>
+            <td><a href="/suppliers/<%=supplier.id%>/additem">Assign Item</a></td>
             <td>
               <a href="/suppliers/edit/<%=supplier.id%>">edit</a>
               <a href="/suppliers/delete/<%=supplier.id%>">delete</a>
