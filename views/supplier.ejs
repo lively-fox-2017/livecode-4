@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/header.ejs %>
+  </head>
+  <body>
+    <% include partials/menu.ejs %>
+    <h2><%= title %></h2><a href="/suppliers/add">Add Supplier</a>
+    <table border="1">
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Kota</th>
+        <th>List Item</th>
+        <th>Add Item</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <% dataSupplier.forEach((rowSupplier) => { %>
+          <tr>
+            <td><%= rowSupplier.id %></td>
+            <td><%= rowSupplier.name %></td>
+            <td><%= rowSupplier.kota %></td>
+            <td>
+              <% if(rowSupplier.Items.length != 0) {
+                  rowSupplier.Items.forEach((listItem, index) => { %>
+                    <%= index+1%>. <%= listItem.name%><br>
+              <%  })
+                } else { %>
+                  No item yet
+              <% } %>
+            </td>
+            <td><a href="#">Assign Item</a></td>
+            <td><a href="/suppliers/edit/<%= rowSupplier.id %>">Edit</a> | <a href="/suppliers/delete/<%= rowSupplier.id %>" onclick="confirm('Apakah anda yakin?')">Delete</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

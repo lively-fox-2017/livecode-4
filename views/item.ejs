@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/header.ejs %>
+  </head>
+  <body>
+    <% include partials/menu.ejs %>
+    <h2><%= title %></h2><a href="/items/add">Add Item</a>
+    <table border="1">
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Code Item</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <% dataItem.forEach((rowItem) => { %>
+          <tr>
+            <td><%= rowItem.id %></td>
+            <td><%= rowItem.name %></td>
+            <td><%= rowItem.brand %></td>
+            <td><%= rowItem.codeitem %></td>
+            <td><a href="/items/edit/<%= rowItem.id %>">Edit</a> | <a href="/items/delete/<%= rowItem.id %>" onclick="confirm('Apakah anda yakin?')">Delete</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

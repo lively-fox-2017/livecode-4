@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/header.ejs %>
+  </head>
+  <body>
+    <% include partials/menu.ejs %>
+    <h2><%= title %></h2>
+    <form action="/suppliers/add" method="post">
+      <table>
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Kota</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" name="name" required></td>
+            <td><input type="text" name="kota" required></td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Submit"> <a href="/suppliers"><button>Cancel</button></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>
