@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h3>Edit Item</h3>
+<p><a href="/items">List data</a></p>
+<form action="/items/edit/<%-data.id%>" method="post">
+	<p>Name</p>
+	<input type="text" name="name" value="<%-data.name%>">
+	<p>Brand</p>
+	<input type="text" name="brand" value="<%-data.brand%>">
+	<p>Code Item</p>
+	<input type="text" name="codeitem" value="<%-data.codeitem%>">
+	<p>
+	<input type="submit" value="Edit Item">
+	</p>
+</form>
+</body>
+</html>

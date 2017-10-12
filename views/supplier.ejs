@@ -14,12 +14,14 @@
 		<th>ID</th>
 		<th>Kota</th>
 		<th>Name</th>
+		<th>Items</th>
 		<th>Action</th>
 		<%data.forEach(i => {%>
 		<tr>
 			<td><%-i.id%></td>
 			<td><%-i.name%></td>
 			<td><%-i.kota%></td>
+			<td><%-i.item_name%></td>
 			<td><a href="/suppliers/edit/<%-i.id%>">Edit</td>
 			<td><a href="/suppliers/delete/<%-i.id%>">Delete</td>
 		</tr>

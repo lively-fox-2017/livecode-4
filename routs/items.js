@@ -15,7 +15,7 @@ router.post('/add', (req,res) => {
 	})
 })
 router.get('/edit/:id', (req,res) => {
-	model.Item.findById(req.params.id).then(Item => {
+	model.Item.findById(req.params.id).then(item => {
 		res.render('item_edit', {data:item})
 	})
 })

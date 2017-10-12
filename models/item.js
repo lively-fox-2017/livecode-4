@@ -4,12 +4,10 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     brand: DataTypes.STRING,
     codeitem: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  Item.associate = (model) => {
+    Item.hasMany(model.SupplierItem,{foreignKey:'ItemId'})
+    Item.belongsToMany(model.Supplier,{through:'SupplierItem'})
+  }
   return Item;
 };

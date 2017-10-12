@@ -3,7 +3,31 @@ const router = express.Router()
 const model = require('../models')
 router.get('/', (req,res) => {
 	model.Supplier.findAll().then(suppliers => {
-		res.render('supplier', {data:suppliers})
+		let prom = []
+		suppliers.forEach(supp => {
+			prom.push(model.SupplierItem.findAll({where:{SupplierId:supp.id}}))
+		})
+
+		// let prom = suppliers.map(supplier => {
+		// 	return new Promise((resolve,reject) => {
+		// 		supplier.getSupplierItems().then(items => {
+		// 			if(items){
+		// 				let newSupplier = items.map(item => {
+		// 					supplier['item_name'] = item.name
+		// 				})
+		// 			} else {
+		// 				supplier['item_name'] = "No Item Yet"
+		// 			}
+		// 			console.log(items)
+		// 		})
+		// 		console.log(supplier)
+		// 		resolve(supplier)
+		// 	})
+		// })
+		Promise.all(prom).then(suppliers => {
+			res.render('supplier', {data:suppliers})
+		})
+		// console.log(prom)
 	})
 })
 router.get('/add', (req,res) => {

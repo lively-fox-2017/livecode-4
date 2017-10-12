@@ -4,12 +4,10 @@ module.exports = function(sequelize, DataTypes) {
     SupplierId: DataTypes.INTEGER,
     ItemId: DataTypes.INTEGER,
     price: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  SupplierItem.associate = (model) => {
+    SupplierItem.belongsTo(model.Supplier)
+    SupplierItem.belongsTo(model.Item)
+  }
   return SupplierItem;
 };
