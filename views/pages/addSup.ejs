@@ -1,0 +1,30 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Edit Supplier</h1>
+        <form action="/suplier/addSup method="POST">
+                <input type="text" name="name">
+                <input type="text" name="kota">
+                <button type="submit">Submit</button>
+         </form>
+    </div>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>
