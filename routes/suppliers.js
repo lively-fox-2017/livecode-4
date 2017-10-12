@@ -34,7 +34,7 @@ router.get('/', function(req,res ) {
     })
     Promise.all(promise)
      .then(fixData => {
-      //  console.log(fixData);
+       console.log(fixData);
         // res.send(fixData)
       res.render('suppliers/suppliers', {dataSupplier: fixData})
      })
@@ -50,7 +50,11 @@ router.post('/', function(req,res) {
     kota: req.body.kota
   })
   .then(() => {
+    // console.log(req.body.name + ' ETAAAAAAAAAAAAAAAAAAAAAAAA' + req.body.kota);
     res.redirect('/suppliers')
+  })
+  .catch(err => {
+    res.send(err)
   })
 })
 
@@ -68,6 +72,7 @@ router.get('/delete/:id', function(req,res) {
 router.get('/edit/:id', function(req,res) {
   Model.Supplier.findById(req.params.id)
   .then(dataSupplier => {
+    // res.send(dataSupplier)
     res.render('suppliers/edit', {dataSupplier:dataSupplier})
   })
 })
@@ -83,6 +88,9 @@ router.post('/edit/:id', function(req,res) {
   })
   .then(() => {
     res.redirect('/suppliers')
+  })
+  .catch(err => {
+    res.send(err)
   })
 })
 
