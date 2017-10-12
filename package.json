@@ -1,0 +1,26 @@
+{
+  "name": "livecode-4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nandiraspatur/livecode-4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nandiraspatur/livecode-4/issues"
+  },
+  "homepage": "https://github.com/nandiraspatur/livecode-4#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "pg": "^7.3.0",
+    "sequelize": "^4.13.8"
+  }
+}
