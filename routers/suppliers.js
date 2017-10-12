@@ -4,7 +4,9 @@ let model = require('../models');
 
 router.get('/', (req, res) => {
   model.Supplier.findAll().then((dataSupplier) => {
-    res.render('supplier', {dataSupplier: dataSupplier})
+    model.SupplierItem.findAll({include:[model.Item, model.Supplier]}).then((dataSuppItem) => {
+      res.render('supplier', {dataSupplier: dataSupplier, dataSuppItem: dataSuppItem})
+    })
   })
 })
 
@@ -32,6 +34,20 @@ router.get('/edit/:id', (req, res) => {
 
 router.post('/edit/:id', (req, res)=> {
   model.Supplier.update({name: req.body.name, kota: req.body.kota},{where:{id: req.params.id}}).then(() => {
+    res.redirect('/suppliers')
+  })
+})
+
+router.get('/:id/additem', (req, res) => {
+  model.Supplier.findAll({where:{id: req.params.id}}).then((dataSupplier) => {
+    model.Item.findAll().then((dataItem) => {
+      res.render('supplieradditem', {dataSupplier: dataSupplier, dataItem: dataItem})
+    })
+  })
+})
+
+router.post('/:id/additem', (req, res) => {
+  model.SupplierItem.create({SupplierId: req.params.id, ItemId: req.body.ItemId, price: req.body.price }).then(() => {
     res.redirect('/suppliers')
   })
 })

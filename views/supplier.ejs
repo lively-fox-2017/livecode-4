@@ -19,11 +19,13 @@
         <td><%=dataSupplier[i].name%></td>
         <td><%=dataSupplier[i].kota%></td>
         <td></td>
-        <td><a href="#">Assign Item</a></td>
+        <td><a href="/suppliers/<%=dataSupplier[i].id%>/additem">Assign Item</a></td>
         <td><a href="/suppliers/edit/<%=dataSupplier[i].id%>">edit</a></td>
         <td><a href="/suppliers/delete/<%=dataSupplier[i].id%>">hapus</a></td>
       </tr>
       <%}%>
     </table>
+    <p><%=dataSuppItem[0].Item.name%></p>
+    <p><%=dataSuppItem[0].Supplier.name%></p>
   </body>
 </html>
