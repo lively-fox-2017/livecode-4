@@ -6,6 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
+  	<a href="/">Home </a><a href="/suppliers">Suppliers </a><a href="/items">Items </a>
     <h1>Halaman Items</h1>
+    <h4><a href="/items/add">Add Item</a></h4>
+     <table border="1px">
+	  <tr>
+	  	<th>ID</th>
+	    <th>Name</th>
+	    <th>Brand</th>
+	    <th>Code Item</th>
+	    <th>Actions</th>
+	  </tr>
+	  <% rows.forEach((row) => { %>
+	  <tr>
+	  	<td><%= row.id %></td>
+	    <td><%= row.name %></td>
+	    <td><%= row.brand %></td>
+	    <td><%= row.codeItem %></td>
+	    <td>
+	      <a href="/items/edit/<%= row.id %>">Edit</a>
+	      <a href="/items/delete/<%= row.id %>">Delete</a>
+	    </td>
+	  </tr>
+	  <% })%>
+	  
+	</table> 
   </body>
 </html>
