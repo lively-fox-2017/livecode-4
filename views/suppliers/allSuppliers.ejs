@@ -1,18 +1,24 @@
 <%- include('../common/header')%>
-<table>
-  <tr>
-    <td>id</td>
-    <td>name</td>
-    <td>kota</td>
-  </tr>
-  <%for(let supplier of suppliers){%>
-  <tr>
-    <td><%=supplier.id%></td>
-    <td><%=supplier.name%></td>
-    <td><%=supplier.kota%></td>
-    <td><a href="/suppliers/edit/<%=supplier.id%>">edit</a>|<a href="/suppliers/delete/<%=supplier.id%>">delete</a></td>
-  </tr>
-  <%}%>
-</table>
+<%if(suppliers.length!=0){%>
+  <table>
+    <tr>
+      <td>id</td>
+      <td>name</td>
+      <td>kota</td>
+    </tr>
+    <%for(let supplier of suppliers){%>
+    <tr>
+      <td><%=supplier.id%></td>
+      <td><%=supplier.name%></td>
+      <td><%=supplier.kota%></td>
+      <td><a href="/suppliers/<%=supplier.id%>/additem">add item</a><a href="/suppliers/edit/<%=supplier.id%>">edit</a>|<a href="/suppliers/delete/<%=supplier.id%>">delete</a></td>
+    </tr>
+    <%}%>
+  </table>
+<%}else{%>
+
+  No item yet
+<%}%>
+
 <a href="/suppliers/add">add</a>
 <%- include('../common/footer')%>

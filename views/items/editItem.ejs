@@ -1,9 +1,12 @@
 <%-include('../common/header')%>
+<%=err%>
 <form class="" action="" method="post">
-  <input type="text" name="name" value="<%item.name%>">
+  name :
+  <input type="text" name="name" value="<%=item.name%>">
+  brand :
   <input type="text" name="brand" value="<%=item.brand%>">
-
-  <input type="text" name="codeitem" value="<%item.codeitem%>">
+  codeitem :
+  <input type="text" name="codeitem" value="<%=item.codeitem%>">
   <input type="submit" name="submit" value="submit">
 </form>
 <%-include('../common/footer')%>

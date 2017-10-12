@@ -44,4 +44,25 @@ router.get('/delete/:id', (req, res)=>{
   })
 })
 
+router.get('/:id/additem', (req, res)=>{
+  let supplier= null;
+  let supplierItems = [];
+  Models.Supplier.findById(req.params.id).then((iSupplier)=>{
+    supplier = iSupplier;
+    return supplier.getItems()
+  }).then((item)=>{
+    supplierItems = item
+    //res.send(item)
+    return Models.Item.findAll()
+  }).then((items)=>{
+    items.filter((item) => {if(!(item in supplierItems)){return item}})
+    //res.send(supplierItems)
+    let dataPassed = {supplier, items}
+    res.render('suppliers/addItem',dataPassed)
+  }).catch((err) => {
+    res.redirect('/');
+  })
+
+})
+
 module.exports = router;
