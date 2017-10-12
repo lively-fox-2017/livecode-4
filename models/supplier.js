@@ -1,4 +1,5 @@
 'use strict';
+const Models = require('../models');
 module.exports = (sequelize, DataTypes) => {
   var Supplier = sequelize.define('Supplier', {
     name: DataTypes.STRING,
@@ -14,5 +15,10 @@ module.exports = (sequelize, DataTypes) => {
   Supplier.associate = function (models){
     Supplier.belongsToMany(models.Item, {through:models.SupplierItem})
   }
+
+  Supplier.afterDestroy((supplier, option)=>{
+    console.log( Models.SupplierItem);
+    return Models.SupplierItem.destroy({where:{SupplierId:supplier.id}})
+  })
   return Supplier;
 };

@@ -4,12 +4,16 @@
     <td>name</td>
     <td>brand</td>
     <td>code item</td>
+    <td>suppliers</td>
   </tr>
   <%for(let item of items){%>
   <tr>
     <td><%=item.name%></td>
     <td><%=item.brand%></td>
     <td><%=item.codeitem%></td>
+    <td><%for(let sup of item.Suppliers){%>
+      <%=sup.name%><br>
+    <%}%></td>
     <td><a href="/items/edit/<%=item.id%>">edit</a>|<a href="/items/delete/<%=item.id%>">delete</a></td>
   </tr>
   <%}%>

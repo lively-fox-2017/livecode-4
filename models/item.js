@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         isUnique(value){
           // Item.findOne({where:{codeitem}}).then((item)=>{
           //   if(item.codeitem){}
-          //   else{throw new Error('Code sudah terdaftar')}
+          //supplier   else{throw new Error('Code sudah terdaftar')}
           // })
         }
       }
@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Item.associate = function (models) {
     Item.belongsToMany(models.Supplier, {through:models.SupplierItem})
+    Item.hasMany(models.SupplierItem)
   };
 
   return Item;

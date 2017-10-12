@@ -1,6 +1,7 @@
 const express = require('express');
 var router = express.Router();
 const Models = require('../models');
+const moneyConverter = require('../helper/moneyConverter');
 
 router.get('/', (req, res)=>{
   Models.Supplier.findAll().then((suppliers)=>{
@@ -51,18 +52,31 @@ router.get('/:id/additem', (req, res)=>{
     supplier = iSupplier;
     return supplier.getItems()
   }).then((item)=>{
-    supplierItems = item
+    if(item.length==0){
+      supplierItems=[]
+    }else{
+      supplierItems = item
+    }
+
     //res.send(item)
     return Models.Item.findAll()
   }).then((items)=>{
-    items.filter((item) => {if(!(item in supplierItems)){return item}})
+    items=items.filter((item) => {if(!(item in supplierItems)){return item}})
     //res.send(supplierItems)
-    let dataPassed = {supplier, items}
+    //supplierItems.map((item)=>{item.SupplierItem.price = moneyConverter(item.SupplierItem.price); return item})
+    //console.log(supplierItems[0].SupplierItem);
+    let dataPassed = {supplier, items, supplierItems}
     res.render('suppliers/addItem',dataPassed)
   }).catch((err) => {
+    console.log(err);
     res.redirect('/');
   })
 
+})
+
+router.post('/:id/additem', (req, res)=>{
+  Models.SupplierItem.create({SupplierId:req.params.id, ItemId:req.body.itemsId, price:req.body.price})
+  res.redirect('/suppliers')
 })
 
 module.exports = router;

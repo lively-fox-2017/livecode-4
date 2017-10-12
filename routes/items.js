@@ -3,7 +3,7 @@ const router = express.Router();
 const Models = require('../models');
 
 router.get('/', (req, res)=>{
-  Models.Item.findAll().then((items)=>{
+  Models.Item.findAll({include:[Models.Supplier]}).then((items)=>{
     console.log(items);
     let dataPassed = {items}
     res.render('items/allItems', dataPassed)
