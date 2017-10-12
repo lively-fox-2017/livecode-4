@@ -1,5 +1,5 @@
 'use strict';
-var model = require('../models');
+const model = require('../models')
 module.exports = (sequelize, DataTypes) => {
   var Item = sequelize.define('Item', {
     name: DataTypes.STRING,
@@ -38,13 +38,17 @@ module.exports = (sequelize, DataTypes) => {
     Item.belongsToMany(models.Supplier, {through: 'SupplierItem'})
     Item.hasMany(models.SupplierItem);
   };
-  Item.beforeDestroy((user, options)=>{
-    console.log(user, 'ababababasfuhjsifdughsiud');
-    // model.SupplierItem.destroy({
-    //   where:{
-    //     itemId: user.id
-    //   }
-    // })
+  Item.afterBulkDestroy((user, options)=>{
+    var Othermodel = model;
+    model.SupplierItem.destroy({
+      where:{
+        ItemId: user.id
+      }
+    }).then((deleted)=>{
+      console.log(deleted);
+    }).catch((err)=>{
+      console.log(err);
+    })
   })
   return Item;
 };
