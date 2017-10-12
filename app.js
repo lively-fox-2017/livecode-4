@@ -4,12 +4,14 @@ const pg = require('pg');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const app = express();
+const index = require('./routes/index');
 const suppliers = require('./routes/suppliers');
 const items = require('./routes/items');
 
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use('/', index)
 app.use('/suppliers', suppliers)
 app.use('/items', items)
 

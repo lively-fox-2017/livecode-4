@@ -5,6 +5,7 @@
     <title></title>
   </head>
   <body>
+    <a href="/">Home</a>
     <a href="/suppliers/add">Add Suppliers</a>
     <table border="1" style="width:30%">
     <thead>
@@ -13,6 +14,7 @@
         <th>Name</th>
         <th>Kota</th>
         <th>list Item</th>
+        <th>Add Item</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -22,7 +24,10 @@
           <td><%=data.id%></td>
           <td><%=data.name%></td>
           <td><%=data.kota%></td>
-          <td><%=data.item_name%></td>
+          <td><%=data.items_name%></td>
+          <td>
+            <a href="/suppliers/:id/additem"><button type="button" name="button">Assign Item</button></a>
+          </td>
           <td>
             <a href="/suppliers/edit/<%=data.id%>">Edit</a>
             <a href="/suppliers/delete/<%=data.id%>">Delete</a>
