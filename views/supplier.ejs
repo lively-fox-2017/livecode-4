@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Kota</th>
+            </tr>
+            
+                <%data.forEach(d => {%>
+                    <tr>
+                    <td><%=d.id%></td>
+                    <td><%=d.name%></td>
+                    <td><%=d.kota%></td>
+                    <td><a href='/suppliers/edit/<%=d.id%>'>Edit</a></td>
+                    <td><a href='/suppliers/delete/<%=d.id%>'>Delete</a></td>
+                </tr>
+                <%})%>
+           
+        </table>
+        <a href='/suppliers/add'>Add a supplier</a>
+        <a href='/'>Home</a>
+    </body>
+</html>
