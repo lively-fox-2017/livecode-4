@@ -8,30 +8,31 @@
 <body>
     <%- include ../partial/menubar%>
         <div class="container">
-            <h1>Edit Supplier</h1>
-            <a href="/supplier/add" class="btn btn-success" role="button">Add Supplier</a>
+            <h1>Edit Item</h1>
+            <h4><%=sendError%></h4>
+            <a href="/item/add" class="btn btn-success" role="button">Add Item</a>
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
 
                         <th>Name</th>
-                        <th>Kota</th>
-                        <th>Alamat</th>
+                        <th>Brand</th>
+                        <th>Code Item</th>
                     </thead>
-                    <form action="/supplier/edit/<%=data.id%>" method="post">
+                    <form action="/item/edit/<%=data.id%>" method="post">
                         <tbody>
                             <td>
                                 <input type="text" name="name" value="<%=data.name%>">
                             </td>
                             <td>
-                                <input type="text" name="kota" value="<%=data.kota%>">
+                                <input type="text" name="brand" value="<%=data.brand%>">
                             </td>
                             <td>
-                                <textarea class="form-control" rows="6" name="alamat"><%=data.alamat%></textarea>
+                                <input type="text" name="codeitem" value="<%=data.codeitem%>">
                             </td>
                             <td>
                                 <input type="submit" value="SAVE">
-                                <a href="/supplier" class="btn btn-danger" role="button">Cancel</a>
+                                <a href="/item" class="btn btn-danger" role="button">Cancel</a>
                             </td>
                         </tbody>
                     </form>

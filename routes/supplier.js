@@ -33,11 +33,42 @@ router.post('/add', (req, res)=>{
 
 // ===========================================================EDIT SUPPLIER
 router.get('/edit/:id', (req, res)=>{
-    model.Supplier.findById({where:{
-        id: req.params.id
-    }})
+    model.Supplier.findById(req.params.id)
     .then(supplier=>{
         res.render('supplier/edit', {title: 'Edit Supplier', data:supplier})
+    })
+    .catch(err=>{
+        res.send(err)
+    })
+})
+
+router.post('/edit/:id', (req, res)=>{
+    model.Supplier.update({
+        name: req.body.name,
+        kota: req.body.kota,
+        alamat: req.body.alamat
+    },{
+        where:{
+            id: req.params.id
+        }
+    })
+    .then(()=>{
+        res.redirect('/supplier')
+    })
+    .catch(err=>{
+        res.send(err)
+    })
+})
+
+router.get('/delete/:id', (req, res)=>{
+    model.Supplier.destroy({where:{
+        id: req.params.id
+    }})
+    .then(()=>{
+        res.redirect('/supplier')
+    })
+    .catch(err=>{
+        res.send(err)
     })
 })
 
