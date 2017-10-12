@@ -14,6 +14,64 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:id/additem', (req, res) => {
+  Model.Supplier.findOne({
+    where: { id: req.params.id },
+    include: [ Model.Item ],
+  }).then((supplier) => {
+    if (!supplier) { res.redirect('/suppliers') }
+    else {
+      Model.Item.all({ order: [['name', 'ASC']] }).then((items) => {
+        let supplierItemIds = [];
+        supplier.Items.forEach((item) => {
+          supplierItemIds.push(item.id);
+        });
+        items = items.filter((item) => {
+          return supplierItemIds.indexOf(item.id) === -1;
+        });
+        res.render('suppliers/additem', {
+          supplier: supplier,
+          items: items
+        });
+      });
+    }
+  });
+});
+
+router.post('/:id/additem', (req, res) => {
+  Model.Supplier.findOne({
+    where: { id: req.params.id },
+    include: [ Model.Item ],
+  }).then((supplier) => {
+    if (!supplier) { res.redirect('/suppliers') }
+    else {
+      Model.Item.all({ order: [['name', 'ASC']] }).then((items) => {
+        let supplierItemIds = [];
+        supplier.Items.forEach((item) => {
+          supplierItemIds.push(item.id);
+        });
+        items = items.filter((item) => {
+          return supplierItemIds.indexOf(item.id) === -1;
+        });
+
+        Model.SupplierItem.create({
+          SupplierId: req.params.id,
+          ItemId: req.body.ItemId,
+          price: req.body.price
+        }).then(() => {
+          res.redirect(`/suppliers/${req.params.id}/additem`);
+        }).catch((err) => {
+          res.render(`suppliers/additem`, {
+            supplier: supplier,
+            items: items,
+            errors: err.errors
+          });
+        });
+      });
+    }
+  });
+});
+
 router.get('/add', (req, res) => {
   res.render('suppliers/add');
 });
