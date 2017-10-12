@@ -1,0 +1,18 @@
+<%-include('../common/header')%>
+<table>
+  <tr>
+    <td>name</td>
+    <td>brand</td>
+    <td>code item</td>
+  </tr>
+  <%for(let item of items){%>
+  <tr>
+    <td><%=item.name%></td>
+    <td><%=item.brand%></td>
+    <td><%=item.codeitem%></td>
+    <td><a href="/items/edit/<%=item.id%>">edit</a>|<a href="/items/delete/:id">delete</a></td>
+  </tr>
+  <%}%>
+</table>
+<a href="/items/add">add</a>
+<%-include('../common/footer')%>
