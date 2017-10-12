@@ -14,8 +14,8 @@
   <h2>Form</h2>
 
 
-  <%dataSuppliers.forEach(row=>{%>
-  <form action="/suppliers/add/row.id%> method="POST">
+
+  <form action="/suppliers/add/:id%> method="POST">
 
 
     <div class="form-group">
@@ -26,7 +26,7 @@
       <label for="kota">Kota:</label>
       <input type="kota" class="form-control" value=<%=row.kota%>  id="kota" placeholder="Enter Kota" name="kota">
     </div>
-    <%})%>
+
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>

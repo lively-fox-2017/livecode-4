@@ -3,8 +3,6 @@ const router = express.Router()
 const model = require('../models')
 
 
-
-
 router.get('/',function(req, res){
   //res.send('hello')
   model.Supplier.findAll()
@@ -18,8 +16,6 @@ router.get('/add', function(req, res){
 })
 
 router.post('/add', function(req, res){
-  //res.send('woooooS')
-  //console.log('hello');
   model.Supplier.create({
     name:req.body.name,
     kota:req.body.kota
@@ -31,14 +27,21 @@ router.post('/add', function(req, res){
 })
 
 router.get('/edit/:id',function(req,res){
-  model.Supplier.findById({where:{id:req.params.id}})
+  const id = req.params.id
+  model.Supplier.findOne({where:{id:id}})
   .then(dataSuppliers=>{
     console.log(dataSuppliers, 'foo');
-    res.render('/suppliers/edit', {dataSuppliers:dataSuppliers})
+    res.render('/suppliers/edit', {dataSuppliers:dataSuppliers, id:id})
   })
 })
 
-
-
+router.get('/delete/:id',function(req,res){
+  model.Supplier.destroy({ where: {
+    id: req.params.id }
+  })
+  .then(()=>{
+    res.redirect('/suppliers')
+  })
+})
 
 module.exports = router

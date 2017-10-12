@@ -12,8 +12,8 @@ app.use(bodyParser.json())
 
 // const item = require('./routers/item')
 // app.use('/',item)
-
-
+// const index = require('./routers/index')
+// app.use('/',index)
 const suppliers = require('./routers/suppliers')
 app.use('/suppliers',suppliers)
 
