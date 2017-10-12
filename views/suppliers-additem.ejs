@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/style/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/style/custom.css">
+  <title>Suppliers-Add-Item for supplier</title>
+  <style>
+      ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+      }
+
+      li {
+          float: left;
+      }
+
+      li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+      }
+
+      li a:hover {
+          background-color: #111;
+      }
+</style>
+</head>
+<body>
+
+  <ul style="margin-bottom:5%;">
+    <li><a class="active" href="/">index</a></li>
+    <li><a href="/suppliers">suppliers</a></li>
+    <li><a href="/items">items</a></li>
+  </ul>
+
+
+  <table class="table is-striped" >
+    <% for(let data=0; data<data_SuppliersToEjs.length; data++){%>
+  <tr>
+    <th>Name</th>
+    <th><%=data_SuppliersToEjs[data].name%></th>
+
+  </tr>
+  <tr>
+    <th>City</th>
+    <td><%=data_SuppliersToEjs[data].kota%></td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>list items</th>
+    <td>
+      <div class="field">
+        <p class="control has-icons-left">
+          <span class="select">
+            <select>
+              <option selected>Iphone</option>
+              <option>Samsung</option>
+              <option>Xiaomi</option>
+            </select>
+          </span>
+          <span class="icon is-small is-left">
+            <i class="fa fa-globe"></i>
+          </span>
+        </p>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>Price</th>
+    <td>
+      <div class="field">
+      <label class="label"></label>
+      <div class="control">
+        <input class="input" type="text" placeholder="harga">
+      </div>
+    </div>
+    </td>
+  </tr>
+  <%}%>
+</table>
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-link">Submit</button>
+  </div>
+  <div class="control">
+    <button class="button is-text">Cancel</button>
+  </div>
+</div>
+
+</body>
+</html>

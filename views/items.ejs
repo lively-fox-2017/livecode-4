@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/style/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/style/custom.css">
+  <title>items</title>
+  <style>
+      ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+      }
+
+      li {
+          float: left;
+      }
+
+      li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+      }
+
+      li a:hover {
+          background-color: #111;
+      }
+</style>
+</head>
+<body>
+
+  <ul style="margin-bottom:5%;">
+    <li><a class="active" href="/">index</a></li>
+    <li><a href="/suppliers">suppliers</a></li>
+    <li><a href="/items">items</a></li>
+  </ul>
+
+
+
+  <div class="container-cust">
+
+    <table class="table is-striped">
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>BRAND</th>
+        <th>CODE ITEM</th>
+        <th>ACTIONS</th>
+      </tr>
+      <% for(let data=0; data<data_ItemsToEjs.length; data++){%>
+      <tr>
+        <td><%=data_ItemsToEjs[data].id%></td>
+        <td><%=data_ItemsToEjs[data].name%></td>
+        <td><%=data_ItemsToEjs[data].brand%></td>
+        <td><%=data_ItemsToEjs[data].codeitem%></td>
+        <td style="margin-left:-5px;">
+              <a class="button is-info is-outlined is-small" href='items/edit/<%=data_ItemsToEjs[data].id%>'>
+              <span class="icon is-small">
+                <i class="fa fa-pencil"></i>
+              </span>
+              <span>Edit</span>
+            </a>
+              <a onclick="myFunction()" class="button is-danger is-outlined is-small" href="items/delete/<%=data_ItemsToEjs[data].id%>">
+              <span class="icon is-small">
+                <i class="fa fa-times"></i>
+              </span>
+              <span>Delete</span>
+            </a>
+            </td>
+      </tr>
+      <%}%>
+    </table>
+
+    <div style="text-align:left; margin-top:35px;">
+        <a class="button is-outlined" href='/items/add'>add Item</a>
+      </div>
+
+  </div>
+</body>
+</html>

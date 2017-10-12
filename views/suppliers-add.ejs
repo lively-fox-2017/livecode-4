@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/style/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/style/custom.css">
+  <title>Suppliers-Add</title>
+</head>
+<body>
+
+  <div style="width:770px">
+
+    <form action="/suppliers/add" method="post">
+          <div class="field">
+            <div class="control has-icons-left has-icons-right">
+              <input class="input is-medium" type="text" placeholder="name" name="suppliers_name">
+              <span class="icon is-small is-left">
+                <i class="fa fa-book"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control has-icons-left has-icons-right">
+              <input class="input is-medium" type="text" placeholder="kota" name="suppliers_kota">
+              <span class="icon is-small is-left">
+                <i class="fa fa-book"></i>
+              </span>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top:33px;" class="control">
+            <!-- <button type="submit" value="Submit" class="button is-primary">Submit</button> -->
+            <input class="button is-success is-outlined is-medium" type="submit" value="Submit input">
+            <input class="button is-success is-outlined is-medium" type="reset" value="Reset input">
+          </div>
+        </form>
+
+        <a style="text-align:center" href="/suppliers">back suppliers</a>
+
+  </div>
+
+</body>
+</html>
