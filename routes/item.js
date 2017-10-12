@@ -28,6 +28,7 @@ router.post("/add", (req, res) => {
 
 router.get("/edit/:id", (req, res) => {
   let error = null;
+
   if (req.query.err) {
     error = req.query.err;
   }
@@ -38,10 +39,10 @@ router.get("/edit/:id", (req, res) => {
 })
 
 router.post("/edit/:id", (req, res) => {
-  Model.Item.update({name: req.body.name, brand: req.body.brand, codeitem: req.body.codeitem}, {where: {id: req.params.id}}).then(() => {
+  Model.Item.update({id: req.params.id, name: req.body.name, brand: req.body.brand, codeitem: req.body.codeitem}, {where: {id: req.params.id}}).then(() => {
     res.redirect("/items")
   }).catch((reason) => {
-    res.redirect("/items/edit/req.params.id?err"+reason.errors[0].message)
+    res.redirect("/items/edit/"+req.params.id+"?err="+reason.errors[0].message)
   })
 })
 

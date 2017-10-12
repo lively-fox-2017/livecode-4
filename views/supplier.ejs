@@ -11,6 +11,8 @@
         <th>ID</th>
         <th>Name</th>
         <th>Kota</th>
+        <th>List Item</th>
+        <th>Add Item</th>
         <th>Action</th>
       </thead>
       <tbody>
@@ -19,6 +21,16 @@
             <td><%= rowSupplier.id %></td>
             <td><%= rowSupplier.name %></td>
             <td><%= rowSupplier.kota %></td>
+            <td>
+              <% if(rowSupplier.Items.length != 0) {
+                  rowSupplier.Items.forEach((listItem, index) => { %>
+                    <%= index+1%>. <%= listItem.name%><br>
+              <%  })
+                } else { %>
+                  No item yet
+              <% } %>
+            </td>
+            <td><a href="#">Assign Item</a></td>
             <td><a href="/suppliers/edit/<%= rowSupplier.id %>">Edit</a> | <a href="/suppliers/delete/<%= rowSupplier.id %>" onclick="confirm('Apakah anda yakin?')">Delete</a></td>
           </tr>
         <% }) %>

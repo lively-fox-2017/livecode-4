@@ -8,9 +8,10 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         is: {
           args: /(HP|SW|LP)\d{4}/,
-          msg: "Wrong Input For Code Item"
+          msg: "Code Item harus diawali dengan HP / SW / LP dan diikuti dengan 4 digit angka"
         },
         isUnique: function(value, next) {
+                    console.log(this.id);
                     Item.find({
                         where: {
                           codeitem: value,
@@ -20,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
                         }
                     }).then(function(error) {
                         if (error) {
-                          return next('Code Item already in use!');
+                          return next('Code Item harus Unik');
                         } else{
                           return next();
                         }
@@ -29,5 +30,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+
+  Item.associate = model =>{
+    Item.belongsToMany(model.Supplier, {through: "SupplierItem", foreignKey: "itemId"})
+    Item.hasMany(model.SupplierItem, {foreignKey: "itemId"})
+  }
+
   return Item;
 };

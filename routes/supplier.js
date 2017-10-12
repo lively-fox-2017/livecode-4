@@ -3,7 +3,8 @@ const router = express.Router()
 const Model = require("../models")
 
 router.get("/", (req, res) => {
-  Model.Supplier.findAll({order:[["id","ASC"]]}).then((rowsSupplier) => {
+  Model.Supplier.findAll({include:[Model.Item], order:[["id","ASC"]]}).then((rowsSupplier) => {
+    // res.send(rowsSupplier)
     res.render("supplier", {dataSupplier: rowsSupplier, title: "List Supplier"})
   })
 })
@@ -17,6 +18,12 @@ router.post("/add", (req, res) => {
     res.redirect("/suppliers");
   })
 })
+
+// router.get("/additem/:id", (req, res) => {
+//   Model.SupplierItem.findAll({where: {supplierId: req.params.id}}).then((rowsSupplierItem) => {
+//   })
+//   res.render("inputSupplier", {title: "Add Supplier"})
+// })
 
 router.get("/edit/:id", (req, res) => {
   Model.Supplier.findOne({where: {id: req.params.id}}).then((rowSupplier) => {
