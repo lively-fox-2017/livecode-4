@@ -23,8 +23,14 @@
                     <td><%=r.id%></td>
                     <td><%=r.name%></td>
                     <td><%=r.kota%></td>
-                    <td></td>
-                    <td></td>
+                    <%r.Items.map((i, indek)=>{%>
+                    <td>
+                        <%=indek+=1 +' '+i.product()+' @Rp '+i.SupplierItem.price%>
+                    </td>
+                    <%})%>
+                    <td>
+                        <a href="/supplier/<%=r.id%>/additem">ASIGN ITEM</a>
+                    </td>
                     <td>
                         <a href="/supplier/edit/<%=r.id%>">EDIT</a>||
                         <a href="/supplier/delete/<%=r.id%>">DELETE</a>

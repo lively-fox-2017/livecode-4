@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ../partial/head%>
+</head>
+<body>
+    <%- include ../partial/menubar%>
+    <div class="container">
+        <h1>Add Item for Supplier</h1>
+        <fieldset>
+            <legend>Name: <%=data.name%></legend><br>
+            <legend>City: <%=data.kota%></legend><br>
+            <legend>Address: <%=data.alamat%></legend><br><br>
+    
+            <h3>List Item</h3>
+            
+            <%data.Items.forEach(z=>{%>
+                <label for=""><%=z.product()%></label>
+            <%})%>
+            <%if (data.SupplierItem){%>
+            <%data.SupplierItem.forEach(y=>{%>
+                <label for=""><%=y.price%></label>
+                <%})%>
+                <%} else {%>
+                    ----
+                <%}%>
+        </fieldset>
+        <form action="/supplier/<%=data.id%>/additem" method="post">
+            
+            <select name="ItemId" >
+                <%item.forEach(x=>{%>
+                <option value="<%=x.id%>"><%=x.product()%></option>
+                <%})%>
+            </select>
+            <input type="number" name="price" placeholder="input price">
+    
+            <input type="submit" value="SAVE">
+        </form>  
+    </div>
+</body>
+</html>

@@ -19,5 +19,12 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+  Item.prototype.product = function () {
+    return `${this.brand} ${this.name}`
+  }
+  Item.associate = function (models) {
+    Item.belongsToMany(models.Supplier, { through: 'SupplierItem' })
+    Item.hasMany(models.SupplierItem)
+  }
   return Item;
 };
