@@ -12,12 +12,13 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-   /* return queryInterface.bulkInsert('Suppliers', [
-     { name: 'PT.Ahay dah',kota:'Jakarta', createdAt:new Date(), updatedAt:new Date()},
-     { name: 'PT.Boleh JUga',kota:'Semarang', createdAt:new Date(), updatedAt:new Date()},
-     { name: 'PT.Berkah Jaya',kota:'Medan', createdAt:new Date(), updatedAt:new Date()},
-    
-      ], {});*/
+    return queryInterface.bulkInsert('SupplierItems', [{
+        SupplierId: 1,
+        ItemId: 1,
+        price: 3000,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -28,6 +29,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('Person', null, {});
     */
-    return queryInterface.bulkDelete('Suppliers', null, {});
+    return queryInterface.bulkDelete('SupplierItems', null, {});
   }
 };

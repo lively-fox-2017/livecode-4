@@ -12,16 +12,18 @@
 
 
 	<div class="container">
-	  <h2>Suppliers</h2>  
-	  <h4><a class="pull-right" href="/suppliers/add">Add</a></h4>      
+	  <h2>Items</h2>  
+	  <h4><a class="pull-right" href="/items/add">Add</a></h4>      
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	        <th>Nama</th>
+	        <th>Name</th>
 	        <th>Kota</th>
-	        <th>List Item</th>
-	        <th>Add Item</th>
-	        <th>Options</th>
+	        <th>Items</th>
+	        <th>Brand</th>
+	        <th>Code Item</th>
+	        <th>OPtions</th>
+	        
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -29,23 +31,17 @@
 	      <tr>
 	        <td><%=supplier.name%></td>
 	        <td><%=supplier.kota%></td>
-	        	<td><%supplier.Items.forEach(item=>{%>
-	        	<%if(item != null){%>
-	      		<%=item.name%>
-	      		<%}else{%>
-	      			<td>No item yet</td>
-	      		<%}%>
-
-			<%})%></td>
-
-			<td><a href="/suppliers/<%=supplier.id%>/additem">Assign Item</a></td>
-			<td><a href="/suppliers/delete/<%=supplier.id%>">Delete</a> | <a href="/suppliers/edit/<%=supplier.id%>">Edit</a></td>
-	      <%})%>
+	        	<%supplier.Items.forEach(item=>{%>
+	        <td><%=item.name%></td>
+	        <td><%=item.brand%></td>
+	        <td><%=item.codeitem%></td>
+	        <td><a href="/items/delete/<%=supplier.id%>">Delete</a> | <a href="/items/edit/<%=supplier.id%>">Edit</a></td>
 	      </tr>
+	      <%})%>
+	      <%})%>
 	    </tbody>
 	  </table>
 	</div>
-
 
 
 </body>
