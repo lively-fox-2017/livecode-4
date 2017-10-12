@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/suppliers/edit/<%=dataSuppliers.id%>" method="post">
+      Name:<br>
+      <input type="text" name="name" value="<%=dataSuppliers.name%>" placeholder="name">
+      <br>
+      Kota:<br>
+      <input type="text" name="kota" value="<%=dataSuppliers.kota%>" placeholder="kota">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
