@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Halaman Suppliers</title>
+  </head>
+  <body>
+    <h1>Suppliers</h1>
+    <td><a href="/suppliers/add">Add</td></a>
+    <table border='1px'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Kota</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% dataSupplier.forEach(row=>{ %>
+          <tr>
+            <td><%= row.id %></td>
+            <td><%= row.name %></td>
+            <td><%= row.kota %></td>
+            <td><a href="/suppliers/edit/<%= row.id %>">Edit</td></a>
+            <td><a href="/suppliers/delete/<%= row.id %>">Delete</td></a>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
