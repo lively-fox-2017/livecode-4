@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Index</title>
+  <style>
+      table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+      }
+      </style>
+</head>
+<body>
+  <a href="/">Home</a>
+  <a href="supplier">Suppliers</a>
+  <a href="item">Items</a>
+  <h1>Item</h1>
+  <h2><a href="supplier/add">Add Item</a></h3>
+  <br/>
+  <table style="width:80%">
+      <tr>
+        <th>Id</th>
+        <th>Name</th> 
+        <th>Brand</th>
+        <th>Code Item</th>
+        <th colspan="2">Action</th>
+      </tr>
+      <%dataItem.forEach(listItems=>{%>
+        <tr>
+            <td><%=listItems.id%></td>
+            <td><%=listItems.name%></td>
+            <td><%=listItems.brand%></td>
+            <td><%=listItems.codeitem%></td>
+            <td><a href="supplier/edit/<%=listItems.id%>">Edit</a></td>
+            <td><a href="supplier/delete/<%=listItems.id%>">Delete</a></td>
+          </tr>
+      <%})%>
+    </table>
+</body>
+</html>
