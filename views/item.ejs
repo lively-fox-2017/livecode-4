@@ -4,7 +4,8 @@
     <% include partials/header.ejs %>
   </head>
   <body>
-    <h2><%= title %></h2><button>Add Item</button>
+    <% include partials/menu.ejs %>
+    <h2><%= title %></h2><a href="/items/add">Add Item</a>
     <table border="1">
       <thead>
         <th>ID</th>
@@ -20,7 +21,7 @@
             <td><%= rowItem.name %></td>
             <td><%= rowItem.brand %></td>
             <td><%= rowItem.codeitem %></td>
-            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+            <td><a href="/items/edit/<%= rowItem.id %>">Edit</a> | <a href="/items/delete/<%= rowItem.id %>" onclick="confirm('Apakah anda yakin?')">Delete</a></td>
           </tr>
         <% }) %>
       </tbody>

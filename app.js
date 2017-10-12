@@ -14,7 +14,7 @@ app.set("view engine", "ejs")
 
 app.use('/', index)
 app.use('/suppliers', supplier)
-app.use('/item', item)
+app.use('/items', item)
 
 app.listen(2600, (err) => {
   if (err) {

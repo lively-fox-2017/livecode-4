@@ -6,21 +6,24 @@
   <body>
     <% include partials/menu.ejs %>
     <h2><%= title %></h2>
-    <form action="/suppliers/add" method="post">
+    <h3><%= error %></h3>
+    <form action="/items/add" method="post">
       <table>
         <thead>
           <tr>
             <td>Name</td>
-            <td>Kota</td>
+            <td>Brand</td>
+            <td>Code Item</td>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><input type="text" name="name" required></td>
-            <td><input type="text" name="kota" required></td>
+            <td><input type="text" name="brand" required></td>
+            <td><input type="text" name="codeitem" required></td>
           </tr>
           <tr>
-            <td><input type="submit" value="Submit"> <a href="/suppliers"><button>Cancel</button></a></td>
+            <td><input type="submit" value="Submit"> <a href="/items"><button>Cancel</button></a></td>
           </tr>
         </tbody>
       </table>

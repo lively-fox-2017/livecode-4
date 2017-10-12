@@ -4,7 +4,8 @@
     <% include partials/header.ejs %>
   </head>
   <body>
-    <h2><%= title %></h2><a href="/supplier/add">Add Supplier</a>
+    <% include partials/menu.ejs %>
+    <h2><%= title %></h2><a href="/suppliers/add">Add Supplier</a>
     <table border="1">
       <thead>
         <th>ID</th>
@@ -15,10 +16,10 @@
       <tbody>
         <% dataSupplier.forEach((rowSupplier) => { %>
           <tr>
-            <td><%= rowsSupplier.id %></td>
-            <td><%= rowsSupplier.name %></td>
-            <td><%= rowsSupplier.kota %></td>
-            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+            <td><%= rowSupplier.id %></td>
+            <td><%= rowSupplier.name %></td>
+            <td><%= rowSupplier.kota %></td>
+            <td><a href="/suppliers/edit/<%= rowSupplier.id %>">Edit</a> | <a href="/suppliers/delete/<%= rowSupplier.id %>" onclick="confirm('Apakah anda yakin?')">Delete</a></td>
           </tr>
         <% }) %>
       </tbody>

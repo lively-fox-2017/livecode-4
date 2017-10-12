@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/header.ejs %>
+  </head>
+  <body>
+    <% include partials/menu.ejs %>
+    <h2><%= title %></h2>
+    <h3><%= error %></h3>
+    <form action="/items/edit/<%= dataItem.id%>" method="post">
+      <table>
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Brand</td>
+            <td>Code Item</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" name="name" value="<%= dataItem.name %>" required></td>
+            <td><input type="text" name="kota" value="<%= dataItem.brand %>" required></td>
+            <td><input type="text" name="kota" value="<%= dataItem.codeitem %>" required></td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Submit"> <a href="/items"><button>Cancel</button></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>
