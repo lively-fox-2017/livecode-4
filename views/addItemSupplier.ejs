@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add Item Supplier</title>
+</head>
+<body>
+  <h1>Add Item for Supplier</h1>
+
+<form action="<%=dataSupplier.id%>" method="post">
+    Name:<br>
+    <input type="text" name="name" value="<%=dataSupplier.name%>" disabled>
+    <br>
+    Kota:<br>
+    <input type="text" name="brand" disabled value="<%=dataSupplier.kota%>">
+    <br>
+    <select name="ItemId">
+      <%dataItem.forEach(listItems=>{
+        
+      })%>
+        <option value="volvo">Volvo</option>
+      </select>
+    <br/><br/>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

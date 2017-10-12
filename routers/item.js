@@ -20,7 +20,7 @@ router.post('/add', (req, res)=>{
       brand: req.body.brand,
       codeitem: req.body.codeitem
     }).then(()=>{
-      res.redirect('/Item');
+      res.redirect('/item');
     })
 })
 
@@ -35,13 +35,14 @@ router.post('/edit/:id', (req, res)=>{
   model.Item.update(
     {
       name: req.body.name,
-      kota: req.body.kota
+      brand: req.body.brand,
+      codeitem: req.body.codeitem
     },{
       where: {
         id: req.params.id
       }
     }).then(()=>{
-      res.redirect('/Item')
+      res.redirect('/item')
     })
 })
 router.get('/delete/:id', (req, res)=>{
@@ -52,7 +53,7 @@ router.get('/delete/:id', (req, res)=>{
       }
     })
     .then(()=>{
-      res.redirect('/Item')
+      res.redirect('/item')
     })
 })
 

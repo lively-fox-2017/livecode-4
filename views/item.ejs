@@ -17,7 +17,7 @@
   <a href="supplier">Suppliers</a>
   <a href="item">Items</a>
   <h1>Item</h1>
-  <h2><a href="supplier/add">Add Item</a></h3>
+  <h2><a href="item/add">Add Item</a></h3>
   <br/>
   <table style="width:80%">
       <tr>
@@ -33,8 +33,8 @@
             <td><%=listItems.name%></td>
             <td><%=listItems.brand%></td>
             <td><%=listItems.codeitem%></td>
-            <td><a href="supplier/edit/<%=listItems.id%>">Edit</a></td>
-            <td><a href="supplier/delete/<%=listItems.id%>">Delete</a></td>
+            <td><a href="item/edit/<%=listItems.id%>">Edit</a></td>
+            <td><a href="item/delete/<%=listItems.id%>">Delete</a></td>
           </tr>
       <%})%>
     </table>
