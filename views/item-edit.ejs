@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%include partial/menu.ejs%>
+    <div class="form">
+      <h3>Add Item</h3>
+      <form method="post">
+        <input type="text" name="name" placeholder="Name" value="<%=item.name%>"><br>
+        <input type="text" name="brand" placeholder="Brand" value="<%=item.brand%>"><br>
+        <input type="text" name="codeitem" placeholder="Kode Item" value="<%=item.codeitem%>"><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </body>
+</html>
