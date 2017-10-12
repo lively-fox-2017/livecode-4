@@ -10,33 +10,32 @@ router.get('/', function (req, res) {
     }]
   })
   .then(rows=>{
-    // console.log(formatUang(123));
-    // console.log(rows[0].Suppliers.SupplierItem)
-    res.send(rows)
-    let promListItem=rows.map(x=>{
-      return new Promise(function(resolve,reject){
-        // console.log('asdfadfasdfsdf');
-        let suppliers=x.Suppliers.map(y=>{
-          console.log('tess');
-          console.log(formatUang(x.SupplierItem.price));
-          y.SupplierItem.price=formatUang(x.SupplierItem.price);
-          return y
-        })
-        x.Suppliers=suppliers;
-        console.log(formatUang(x.Suppliers.SupplierItem.price));
 
-
-        resolve(x);
-      })
-    })
-    Promise.all(promListItem)
-    .then(rowsItems=>{
-      console.log(rowsItems)
+    // let promListItem=rows.map(x=>{
+    //   return new Promise(function(resolve,reject){
+    //     // console.log('asdfadfasdfsdf');
+    //     let suppliers=x.Suppliers.map(y=>{
+    //       console.log(formatUang(y.SupplierItem.price));
+    //       let price=formatUang(y.SupplierItem.price);
+    //       y.SupplierItem.price=price
+    //       return y
+    //     })
+    //     x.Suppliers=suppliers;
+    //     console.log(formatUang(x.Suppliers.SupplierItem.price));
+    //
+    //
+    //     resolve(x);
+    //   })
+    // })
+    // Promise.all(promListItem)
+    // .then(rowsItems=>{
+    //   // console.log(rowsItems)
+    //   res.send(rowsItems)
       res.render('item_list',{data:rows})
-    })
-    .catch(err=>{
-      res.send(err)
-    })
+    // })
+    // .catch(err=>{
+    //   res.send(err)
+    // })
   })
   .catch(err=>{
     res.send(err);

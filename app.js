@@ -12,10 +12,12 @@ app.set('view engine', 'ejs');
 const index=require('./routes/index')
 const item=require('./routes/item')
 const supplier=require('./routes/supplier')
+const search=require('./routes/search')
 
 app.use('/',index);
 app.use('/items',item);
 app.use('/suppliers',supplier);
+app.use('/search',search);
 
 app.listen(3000,()=>{
   console.log('listen on port 3000');
