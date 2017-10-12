@@ -82,14 +82,14 @@ router.get('/delete/:id', (req, res)=>{
 //
 
 //associate
-router.get('/:id/addsubject', (req, res)=>{
-  model.Student.findAll({
+router.get('/:id/addprice', (req, res)=>{
+  model.Supplier.findAll({
     where: {id: `${req.params.id}`}
   })
-  .then(student => {
-    model. Subject.findAll()
-    .then(subject => {
-      res.render('studentAddSubject', {dataStudent: student, dataSubject: subject, title: 'Add Subject'})
+  .then(supplier => {
+    model.Item.findAll()
+    .then(item => {
+      res.render('SupplierItem', {supplier: supplier, item: subject, item: 'Add Price'})
     })
     .catch(err =>{
       console.log(err);
@@ -100,8 +100,8 @@ router.get('/:id/addsubject', (req, res)=>{
   })
 })
 
-router.post('/:id/addsubject', (req, res)=>{
-  model.SubjectStudent.create({
+router.post('/:id/addprice', (req, res)=>{
+  model.SupplierItem.create({
     StudentId: `${req.params.id}`,
     SubjectId: `${req.body.SubjectId}`,
     createdAt: new Date(),
@@ -109,7 +109,7 @@ router.post('/:id/addsubject', (req, res)=>{
   })
   .then(student => {
     res.redirect('/students')
-    // res.send(student)
+
   })
   .catch(err=> {
     console.log(err);

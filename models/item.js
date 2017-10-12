@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
+            unique: {
+                args: true,
+                message: 'Code Item harus Unik',
+            }
             validate: {
                 len: {
                     args: /(HP|SW|LP)\d{4}/,
@@ -21,5 +25,12 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+
+    Item.associate = function(models){
+      Item.belongsToMany(models: models.Supplier, { through: 'SupplierItem' })
+    }
+
+
+
   return Item;
 };
