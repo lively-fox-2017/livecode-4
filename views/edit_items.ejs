@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Items</title>
+  </head>
+  <body>
+    <table>
+      <form action="/items/edit/<%= dataItems.id %>" method="post">
+        Name:<br>
+        <input type="text" name="name" value="<%= dataItems.name %>">
+        <br>
+        Brand:<br>
+        <input type="text" name="brand" value="<%= dataItems.brand %>">
+        <br>
+        Code Item:<br>
+        <input type="text" name="codeitem" value="<%= dataItems.codeitem %>">
+        <br>
+        <input type="submit" value="Submit">
+      </form>
+    </table>
+  </body>
+</html>

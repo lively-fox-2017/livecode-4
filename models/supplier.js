@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Supplier.associate = function(models){
     Supplier.hasMany(models.Item)
+    Supplier.hasMany(models.SupplierItem)
   }
   return Supplier;
 };

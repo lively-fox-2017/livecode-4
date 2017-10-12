@@ -42,7 +42,7 @@ router.post('/add', (req,res)=>{
   })
 })
 
-router.delete('/delete/:id', (req,res)=>{
+router.get('/delete/:id', (req,res)=>{
   Model.Supplier.destroy({
     where:{
       id:req.params.id
@@ -83,7 +83,7 @@ router.post('/edit/:id',(req,res)=>{
   })
 })
 
-
+router.get('/additem/id')
 
 
 
