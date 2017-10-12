@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 sample page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+  	<a href="/">Home </a><a href="/suppliers">Suppliers </a><a href="/items">Items </a>
+    <h1>Halaman Suppliers</h1>
+    <h4><a href="/suppliers/add">Add Supplier</a></h4>
+     <table border="1px">
+	  <tr>
+	  	<th>ID</th>
+	    <th>Name</th>
+	    <th>Kota</th>
+	    <th>Actions</th>
+	  </tr>
+	  <% rows.forEach((row) => { %>
+	  <tr>
+	  	<td><%= row.id %></td>
+	    <td><%= row.name %></td>
+	    <td><%= row.kota %></td>
+	    <td>
+	      <a href="/suppliers/edit/<%= row.id %>">Edit</a>
+	      <a href="/suppliers/delete/<%= row.id %>">Delete</a>
+	    </td>
+	  </tr>
+	  <% })%>
+	  
+	</table> 
+  </body>
+</html>
