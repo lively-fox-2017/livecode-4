@@ -5,14 +5,18 @@ module.exports = (sequelize, DataTypes) => {
     brand: DataTypes.STRING,
     codeitem: {
       type: DataTypes.STRING,
-      unique: true
+      unique: true,
+      validate: {
+        is: /(HP|SW|LP)\d{4}/,
+        msg : "‘Code Item harus Unik"
+      }
     },
     createdAt: {
-      type: DataTypes.date,
-      defaultValue: new Date(),
+      type: DataTypes.DATE(3),
+      defaultValue: new Date()
     },
     updatedAt: {
-      type: DataTypes.date,
+      type: DataTypes.DATE(3),
       defaultValue: new Date()
     }
   }, {

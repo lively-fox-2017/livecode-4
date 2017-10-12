@@ -10,12 +10,11 @@
             <tr>
                 <th>ID</th>
                 <th>Nama</th>
-                <th>Kota</th>
-                <th>List Item</th>
-                <th>Add Item</th>
+                <th>Brand</th>
+                <th>Kode Item</th>
                 <th colspan="2">Action</th>
             </tr>
-            <%dataSupplier.forEach(function(data){ %>
+            <%dataItem.forEach(function(data){ %>
                 <tr>
                     <td>
                         <%= data.id%>
@@ -24,20 +23,21 @@
                         <%= data.name%>
                     </td>
                     <td>
-                        <%= data.kota%>
+                        <%= data.brand%>
                     </td>
                     <td>
+                        <%= data.codeitem%>
                     </td>
                     <td>
-                        <a href="/suppliers/edit/<%= data.id%>"> Edit</a>
-                        <a href="/suppliers/delete/<%= data.id%>">Delete</a>
+                        <a href="/items/edit/<%= data.id%>"> Edit</a>
+                        <a href="/items/delete/<%= data.id%>">Delete</a>
                     </td>
                 </tr>
                 <% })%>
 
 
         </table>
-        <a href="/suppliers/add"> Add Suppliers</a>
+        <a href="/items/add"> Add Item</a>
 
     </div>
 </body>

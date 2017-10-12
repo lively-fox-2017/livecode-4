@@ -4,11 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     kota: DataTypes.STRING,
     createdAt: {
-      type: DataTypes.date,
-      defaultValue: new Date(),
+      type: DataTypes.DATE(3),
+      defaultValue: new Date()
     },
     updatedAt: {
-      type: DataTypes.date,
+      type: DataTypes.DATE(3),
       defaultValue: new Date()
     }
   }, {
