@@ -83,7 +83,36 @@ router.post('/edit/:id',(req,res)=>{
   })
 })
 
-router.get('/additem/id')
+router.get('/additem/:id',(req,res)=>{
+  Model.SupplierItem.findById(req.params.id)
+  .then(data=>{
+    Model.Item.findAll({
+      include: [Model.Supplier]
+    })
+    .then(dataItem=>{
+        res.render('additem',{dataItems:dataItem,dataSupplierItems:data})
+      })
+    })
+    .catch(err=>{
+      res.send(err)
+    })
+  })
+
+
+router.post('/additem/:id',(req,res)=>{
+  Model.SupplierItem.update({
+    SupplierId: req.params.id,
+    ItemId: req.body.ItemId,
+    price: req.body.price,
+  },{
+    where:{
+      id: req.params.id
+    }
+  })
+  .then(dataSupplierItems =>{
+    console.log(dataSupplierItems);
+  })
+})
 
 
 

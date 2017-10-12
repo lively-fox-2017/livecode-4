@@ -93,21 +93,17 @@ router.post('/edit/:id',(req,res)=>{
     name: req.body.name,
     brand: req.body.brand,
     codeitem: req.body.codeitem,
-    SupplierId: req.body.SupplierId
   },{
     where: {
       id: req.params.id
     }
   })
   .then(data=>{
-    if(err){
-      if(err.name = 'SequelizeValidationError'){
-        res.render('edit_items',{dataError: 'Harus Unique Mas bro!'})
-      } else {
+    // if(err){
+    //   if(err.name = 'SequelizeValidationError'){
+    //     res.render('edit_items',{dataError: 'Harus Unique Mas bro!'})
+    //   } else {
         res.redirect('/items')
-      }
-    }
-
   })
   .catch(err=>{
     res.send(err)

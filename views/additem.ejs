@@ -5,16 +5,38 @@
     <title>Add Item for Suppliers</title>
   </head>
   <body>
-    <table>
-      <form action="/suppliers/additem/<%=dataSupplier.id%>" method="post">
+    <table border="1px">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>List Item</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%dataItems.forEach(row=>{%>
+          <tr>
+            <td><%= row.id %></td>
+            <td><%= row.brand%></td>
+            <td><%= row.kota%></td>
+            <td><%= row.name%></td>
+          </tr>
+        <%})%>
+      </tbody>
+      </table>
+      <form action="/suppliers/additem/<%=dataItems.id%>" method="post">
         List Item:<br>
-        <input type="text" name="name" placeholder="Input Name">
+          <select name="ItemId">
+            <%dataItems.forEach(row=>{%>
+           <option value="<%=row.id%>"><%= row.name%></option>
+            <%})%>
+          </select>
         <br>
         Price:<br>
-        <input type="text" name="kota" placeholder="Input Kota">
+        <input type="text" name="price" placeholder="Price">
         <br><br>
         <input type="submit" value="Submit">
       </form>
-    </table>
   </body>
 </html>
