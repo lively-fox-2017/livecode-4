@@ -7,8 +7,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         is: /^[LP|HP|SW]{2}\d{4}$/i
-      },
-      unique: true
-  }});
+      }
+    },
+    SupplierId: DataTypes.INTEGER
+  });
+  Item.associate = function(models) {
+    Item.belongsTo(models.Supplier);
+  };
   return Item;
 };

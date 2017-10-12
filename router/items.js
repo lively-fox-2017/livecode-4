@@ -58,5 +58,17 @@ router.get('/delete/:id',function(req,res){
   })
 })
 
+router.get('/:id/assignsuppliers',function(req,res){
+  Models.Item.findAll({
+    include:[Models.Supplier]
+  },{
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dataItem){
+    // res.send(dataItem)
+    res.render('assignSuppliers',{Item:dataItem})
+  })
+})
 
 module.exports = router

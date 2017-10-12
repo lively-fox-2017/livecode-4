@@ -10,7 +10,7 @@
   <% if(hasOwnProperty(error)){%>
     <h1>Error</h1>
   <% } %>
-  <form action="/items/edit/<%= Item[0].id %>" method="post">
+<form action="/items/edit/<%= Item[0].id %>" method="post">
   Name<br>
   <input type="text" name="name" value="<%= Item[0].name %>">
   <br>
