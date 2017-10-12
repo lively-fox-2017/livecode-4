@@ -9,7 +9,7 @@ router.get('/', (req,res)=>{
     }
   )
     .then(dataSupplier=>{
-      // res.send(dataSupplier)
+      // res.send(dataSupplier[0])
         res.render('supplier',{dataSupplier:dataSupplier});
   })
 })
@@ -62,11 +62,26 @@ router.get('/delete/:id', (req, res)=>{
 router.get('/:id/additem',(req, res)=>{
   model.Supplier.findById(req.params.id)
     .then(dataSupplier=>{
-      model.Item.findAll()
+      model.Item.findAll(
+        {
+          include:['SupplierItems']
+        })
         .then(dataItem=>{
+          // res.send(dataItem[0])
           res.render('addItemSupplier', {dataItem:dataItem,dataSupplier:dataSupplier})
         })
     })
+})
+router.post('/:idSupplier/additem', (req, res)=>{
+  model.SupplierItem.create(
+    {
+      ItemId: req.body.ItemId,
+      SupplierId: req.params.idSupplier,
+      price: req.body.price
+    })
+      .then(()=>{
+        res.redirect('/supplier')
+      })
 })
 
 module.exports =  router;

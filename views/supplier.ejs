@@ -33,8 +33,14 @@
             <td><%=listSupplier.id%></td>
             <td><%=listSupplier.name%></td>
             <td><%=listSupplier.kota%></td>
-            <%if(listSupplier.Item){%>
-              <td>listSupplier.Item.name</td>
+            <%if(listSupplier.Items){%>
+              <td>
+                <ol>
+                    <%listSupplier.Items.forEach(nameItem=>{%>
+                  <li><%=nameItem.name%></li>
+                  <%})%>
+                </ol>              
+            </td>
             <%}else{%>
               <td>No item yet</td>
             <%}%>

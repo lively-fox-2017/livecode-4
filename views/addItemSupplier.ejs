@@ -9,19 +9,43 @@
 <body>
   <h1>Add Item for Supplier</h1>
 
-<form action="<%=dataSupplier.id%>" method="post">
-    Name:<br>
+<form action="/supplier/<%=dataSupplier.id%>/additem" method="post">
+    Name:
     <input type="text" name="name" value="<%=dataSupplier.name%>" disabled>
-    <br>
-    Kota:<br>
+    <br><br>
+    Kota:
     <input type="text" name="brand" disabled value="<%=dataSupplier.kota%>">
     <br>
+    <%dataItem.forEach(listItems=>{%>
+ 
+      <%if(listItems){%>
+       
+        <%listItems.SupplierItems.forEach(listPrice=>{%>
+          <br>
+          Name Phone:
+          <input type="text" name="name" disabled value="<%=listItems.name%>">
+          <br>
+          <br>
+          Price: 
+          <input type="text" name="brand" disabled value="<%=listPrice.price%>">
+          <br>
+     <%})
+      }else{}
+    })%>
+    
+    <br>
+    <br>
+
     <select name="ItemId">
       <%dataItem.forEach(listItems=>{
-        
-      })%>
-        <option value="volvo">Volvo</option>
+        if(listItems.SupplierItems){%>
+        <option value="<%=listItems.id%>"><%=listItems.name%></option>
+      <%}
+    })%>
       </select>
+    <br/><br/>
+    Price:
+    <input type="text" name="price" placeholder="300000000" >
     <br/><br/>
     <input type="submit" value="Submit">
   </form>
