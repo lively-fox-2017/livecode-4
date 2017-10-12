@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>Kota</th>
+        <th>List Item</th>
+        <th>Add Item</th>
+      </tr>
+      <%for(var i = 0; i < dataSupplier.length; i++) {%>
+      <tr>
+        <td><%=dataSupplier[i].id%></td>
+        <td><%=dataSupplier[i].name%></td>
+        <td><%=dataSupplier[i].kota%></td>
+        <td></td>
+        <td><a href="/suppliers/<%=dataSupplier[i].id%>/additem">Assign Item</a></td>
+        <td><a href="/suppliers/edit/<%=dataSupplier[i].id%>">edit</a></td>
+        <td><a href="/suppliers/delete/<%=dataSupplier[i].id%>">hapus</a></td>
+      </tr>
+      <%}%>
+    </table>
+    <p><%=dataSuppItem[0].Item.name%></p>
+    <p><%=dataSuppItem[0].Supplier.name%></p>
+  </body>
+</html>

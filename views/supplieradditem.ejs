@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p><%=dataSupplier[0].name%></p>
+    <p><%=dataSupplier[0].kota%></p>
+    <form action="/suppliers/<%=dataItem[0].id%>/additem" method="post">
+      <select name="ItemId">
+        <%for(var i = 0; i < dataItem.length; i++) {%>
+        <option value="<%=dataItem
+        [i].id%>"><%=dataItem[i].name%></option>
+        <%}%>
+      </select>
+      <input type="input" name="price" placeholder="price">
+      <input type="submit" value="submit">
+    </form>
+  </body>
+</html>
