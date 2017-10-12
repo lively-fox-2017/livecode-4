@@ -5,7 +5,7 @@ const models = require('../models')
 
 router.get('/',(req,res)=>{
   models.Supplier.findAll().then(dataSupplier=>{
-    res.send(dataSupplier)
+    res.render('supplier',{dataSupplier:dataSupplier})
   })
 })
 

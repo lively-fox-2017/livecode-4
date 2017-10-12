@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/items/edit/<%=dataItem.id%>" method="POST">
+      <input type="text" name="name" value="<%=dataItem.name%>" ><br>
+      <input type="text" name="brand" value="<%=dataItem.brand%>" ><br>
+      <input type="text" name="codeitem" value="<%=dataItem.codeitem%>" ><br>
+      <input type="submit" value="Edit">
+    </form>
+  </body>
+</html>
