@@ -13,22 +13,26 @@
 <div class="container">
   <h2>Supplier</h2>
   <p>Lorem</p>
+  <a href="/suppliers/add">Add Supplier</a>
   <table class="table">
     <thead>
       <tr>
         <th>id</th>
         <th>name</th>
         <th>kota</th>
+        <th>Options</th>
       </tr>
     </thead>
     <tbody>
+          <%dataSuppliers.forEach(row=>{%>
       <tr>
-        <%dataSuppliers.forEach(row=>{%>
         <td><%=row.id%></td>
         <td><%=row.name%></td>
         <td><%=row.kota%>a</td>
-        <%})%>
+        <td><a href="/suppliers/edit/row.id">Edit</a></td>
+        <td><a href="/delete/row.id">Delete</a></td>
       </tr>
+      <%})%>
 
     </tbody>
   </table>
