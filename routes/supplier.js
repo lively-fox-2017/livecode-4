@@ -5,8 +5,9 @@ const moment = require('moment')
 
 router.get('/', (req, res) => {
 
-	Model.Suplier.findAll().then(resultSuplier =>{
-		res.render('pages/index.ejs', {resultSuplier})
+	Model.Suplier.findAll({include : [Model.Item]}).then(resultSuplier =>{
+	res.send(resultSuplier)
+		//res.render('pages/index.ejs', {resultSuplier})
 	})
 })
 

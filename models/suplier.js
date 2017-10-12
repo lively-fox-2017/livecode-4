@@ -3,12 +3,11 @@ module.exports = (sequelize, DataTypes) => {
   var Suplier = sequelize.define('Suplier', {
     name: DataTypes.STRING,
     kota: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+  })
+
+  Suplier.associate = model =>{
+    Suplier.hasMany(model.SupplierItem, {foreignKey : 'SupplierId'})
+    Suplier.belongsToMany(model.Item, {through : 'SupplierItem', foreignKey : 'SupplierId'})
+  }
   return Suplier;
 };

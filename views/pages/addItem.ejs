@@ -4,6 +4,18 @@
 <html lang="en">
 <head>
     <% include ../partials/head %>
+    <script type="text/javascript">   
+    var re = /(HP|SW|LP)\d{4}/;  
+      
+    function testInfo(phoneInput) {
+    console.log('masuk sini');  
+    var OK = re.exec(phoneInput.value);  
+    if (!OK){
+          window.alert(phoneInput.value + ' Bukan Kode item yang tepat!')
+          event.preventDefault();  
+        }
+      }
+    </script>
 </head>
 <body class="container">
 
@@ -17,8 +29,8 @@
         <form action="/item/addItem" method="POST">
                 <input type="text" name="name" placeholder="Nama Barang">
                 <input type="text" name="brand" placeholder="Brand">
-                <input type="text" name="codeitem" placeholder="Code Item">
-                <button type="submit">Submit</button>
+                <input type="text" name="codeitem" placeholder="Code Item" id="codeitem">
+                <button onclick="testInfo(document.getElementById('codeitem'))" type="submit">Submit</button>
          </form>
     </div>
 </main>
