@@ -40,7 +40,7 @@ router.post('/edit/:id',function(req,res){
       id: req.params.id
     }
   }).then(function(){
-    res.render('editSuppliers')
+    res.redirect('/suppliers')
   })
 })
 

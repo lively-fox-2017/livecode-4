@@ -27,8 +27,8 @@ router.get('/edit/:id',function(req,res){
     where:{
       id: req.params.id
     }
-  }).then(function(dataItem){
-    res.render('editItems',{Item:dataItem})
+  }).then(function(dataItem,err){
+    res.render('editItems',{Item:dataItem,error:err})
   })
 })
 
@@ -42,7 +42,9 @@ router.post('/edit/:id',function(req,res){
       id: req.params.id
     }
   }).then(function(){
-    res.render('editItems')
+    res.redirect('/items')
+  }).catch(function(dataItem,err){
+    res.render('editItems',{Item:dataItem,error:err})
   })
 })
 

@@ -4,11 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     kota: DataTypes.STRING
   }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+    Supplier.associate = function (models) {
+      Supplier.hasMany(models.Item);
+};
   });
   return Supplier;
 };
