@@ -8,13 +8,13 @@ router.get('/',(req,res)=>{
     // res.send('masuk')
     res.render('item',{dataItem:dataItem})
   })
+  .catch(err=>{
+    res.send(err)
+  })
 })
 
 router.get('/add',(req,res)=>{
-    // res.send('oi')
-    res.render('additem')
-    // ,{dataItem:dataItem})
-  // })
+  res.render('additem',{error:null})
 })
 
 router.post('/add',(req,res)=>{
@@ -28,8 +28,7 @@ router.post('/add',(req,res)=>{
     res.redirect('/item')
   })
   .catch(err=>{
-    // res.redirect('/item',err:null)
-    res.send(err)
+    res.render('item',{error:err})
   })
 })
 
