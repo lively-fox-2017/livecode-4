@@ -1,0 +1,13 @@
+<html>
+        <body>
+            <form action="/suppliers/assign/<%=data.id%>" method='post'>
+                <select name='itemId'>
+                    <%items.forEach(d => {%>
+                        <option value="<%=d.id%>"><%=d.name%></option>
+                    <%})%>
+                </select>
+                <input type='number' name='price'>
+                <input type='submit' value='submit'>
+            </form>
+        </body>
+    </html>

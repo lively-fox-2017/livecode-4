@@ -3,10 +3,13 @@ var router = express.Router();
 var models = require('../models')
 
 router.get('/', (req,res) => {
-    models.Suppliers.findAll()
+    models.Suppliers.findAll({
+        include: [{model: models.Item}]
+    })
     .then((data) => {
-        res.send(data)
-        // res.render('supplier', {data:data})
+        // console.log(data[0].Items[0].SupplierItem.dataValues.price)
+        // res.send(data[0].Items[0].SupplierItem)
+        res.render('supplier', {data:data})
     })
     // res.send('halo')
 })
@@ -63,6 +66,39 @@ router.get('/delete/:id', (req,res) => {
     .then(() => {
         res.redirect('/suppliers')
     })
+    // res.send('halo')
+})
+
+
+router.get('/assign/:id', (req,res) => {
+    models.Suppliers.findAll({
+        include: [{model: models.Item}]
+    }, {
+        where: {
+            id: `${req.params.id}`
+        }
+    })
+    .then(data => {
+        models.Item.findAll()
+        .then(items => {
+            // res.send(items)
+            res.render('assignItem', {data: data[0], items: items})
+        })
+    })
+})
+
+router.post('/assign/:id', (req,res) => {
+    if(req.body.price !== '') {
+        models.SupplierItem.create({
+            SupplierId: `${req.params.id}`,
+            ItemId: `${req.body.itemId}`,
+            price: `${req.body.price}`
+        })
+        .then(() => {
+            res.redirect('/suppliers')
+        })
+    }
+  
     // res.send('halo')
 })
 module.exports = router

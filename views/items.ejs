@@ -6,6 +6,7 @@
                     <th>Name</th>
                     <th>Brand</th>
                     <th>Code Item</th>
+                    <th>Supplier</th>
                 </tr>
                 
                     <%data.forEach(d => {%>
@@ -14,6 +15,9 @@
                             <td><%=d.name%></td>
                             <td><%=d.brand%></td>
                             <td><%=d.codeitem%></td>
+                            <td><%d.Suppliers.forEach(x => {%>
+                                <%=x.name%>
+                            <%})%></td>
                             <td><a href='/item/edit/<%=d.id%>'>Edit</a></td>
                             <td><a href='/item/delete/<%=d.id%>'>Delete</a></td>
                         </tr>

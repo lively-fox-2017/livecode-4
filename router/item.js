@@ -3,12 +3,58 @@ var router = express.Router();
 var models = require('../models')
 
 router.get('/', (req,res) => {
-    models.Item.findAll()
+    models.Item.findAll({
+        include: [{model: models.Suppliers}]
+    })
     .then((data) => {
         // res.send(data)
         res.render('items', {data:data})
     })
     // res.send('halo')
+})
+
+router.get('/search', (req,res) => {
+    models.SupplierItem.findAll({
+        include: [{model: models.Suppliers},{
+            model: models.Item
+        }]
+    })
+    .then((data) => {
+        // res.send(data)
+        res.render('search', {data:data})
+    })
+    // res.send('halo')
+})
+
+router.post('/search', (req,res) => {
+    console.log(req.body)
+    var min = req.body.minPrice
+    var max = req.body.maxPrice
+    if(req.body.minPrice == '') {
+        min = `0`
+    }
+    if(req.body.maxPrice == '') {
+        max = `1000000000`
+    }
+    if(min && max !== '') {
+        models.SupplierItem.findAll({
+            include: [{model: models.Suppliers},{
+                model: models.Item,
+                where: {
+                    name: {
+                        $iLike: '%phone'
+                    }
+                }
+            }], where: {
+                price: {
+                    $between: [min, max]
+                }
+            }
+        })
+        .then((data) => {
+            res.send(data)
+        })
+    }
 })
 
 router.get('/add', (req,res) => {

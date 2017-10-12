@@ -1,0 +1,28 @@
+<html>
+        <body>
+                <form action="/item/search" method='post'>
+                    <input type='text' name='name'>
+                    <input type='text' name='minPrice'>
+                    <input type='text' name='maxPrice'>
+                    <input type='submit' value='submit'>
+                </form>
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Supplier</th>
+                    <th>Price</th>
+                </tr>
+                    <%data.forEach(d => {%>
+                        <tr>
+                            <td></td>
+                            <td><%=d.Item.name%></td>
+                            <td><%=d.Supplier.name%></td>
+                            <td><%=d.price%></td>
+                        </tr>
+                    <%})%>
+            </table>
+            <a href='/item/add'>Add an item</a>
+            <a href='/'>Home</a>
+        </body>
+    </html>
