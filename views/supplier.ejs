@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/header.ejs %>
+  </head>
+  <body>
+    <h2><%= title %></h2><a href="/supplier/add">Add Supplier</a>
+    <table border="1">
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Kota</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <% dataSupplier.forEach((rowSupplier) => { %>
+          <tr>
+            <td><%= rowsSupplier.id %></td>
+            <td><%= rowsSupplier.name %></td>
+            <td><%= rowsSupplier.kota %></td>
+            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

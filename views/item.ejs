@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/header.ejs %>
+  </head>
+  <body>
+    <h2><%= title %></h2><button>Add Item</button>
+    <table border="1">
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Code Item</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <% dataItem.forEach((rowItem) => { %>
+          <tr>
+            <td><%= rowItem.id %></td>
+            <td><%= rowItem.name %></td>
+            <td><%= rowItem.brand %></td>
+            <td><%= rowItem.codeitem %></td>
+            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
