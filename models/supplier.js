@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE(3),
       defaultValue: new Date()
     }
-  }, {
-      classMethods: {
-        associate: function (models) {
-          // associations can be defined here
-        }
-      }
-    });
+  })
+  Supplier.associate = model => {
+    Supplier.belongsToMany(model.Item, { through: 'SupplierItem' });
+    Supplier.hasMany(model.SupplierItem);
+
+
+  }
   return Supplier;
 };

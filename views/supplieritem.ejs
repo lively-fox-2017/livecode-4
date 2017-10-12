@@ -1,0 +1,30 @@
+<html>
+        
+        <head>
+            <title>
+                Add Item
+            </title>
+        </head>
+        
+        <body>
+    
+            <h4>Add Item for Supplier</h4>
+            
+            <div id="form"></div>
+            Name : <%= data.name%>
+            Kota : <%= data.kota%>
+                <form action="/suppliers/<%= data.id%>/additem" method="post">
+                    Nama Barang:
+                    <input name="name" /> <br>
+                    <br>Brand :
+                    <input name="brand" /> <br>
+                    <br> Item Code :
+                    <input name="codeitem" /> <br>
+                    <br>
+                    <input type="submit" value="Save">
+                </form>
+        
+            </div>
+        </body>
+        
+        </html>

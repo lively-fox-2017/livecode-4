@@ -26,12 +26,28 @@
                     <td>
                         <%= data.kota%>
                     </td>
-                    <td>
-                    </td>
-                    <td>
-                        <a href="/suppliers/edit/<%= data.id%>"> Edit</a>
-                        <a href="/suppliers/delete/<%= data.id%>">Delete</a>
-                    </td>
+                    <% data.Items.forEach(function(item) { 
+                        if(item.name){ %>
+                        <td>
+                            <%= item.brand%>
+                                <%= item.name%> @
+                                    <%data.SupplierItems.forEach(function(sp){
+                                    sp.price
+                                })%>
+                        </td>
+                        <%} else {%>
+                            <td>
+                                No Item yet
+                            </td>
+                            <%}})%>
+                                <td>
+                                    <a href="/suppliers/<%=data.id%>/additem">Add Item</a>
+                                </td>
+
+                                <td>
+                                    <a href="/suppliers/edit/<%= data.id%>"> Edit</a>
+                                    <a href="/suppliers/delete/<%= data.id%>">Delete</a>
+                                </td>
                 </tr>
                 <% })%>
 

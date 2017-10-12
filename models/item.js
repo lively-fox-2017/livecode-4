@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       validate: {
         is: /(HP|SW|LP)\d{4}/,
-        msg : "‘Code Item harus Unik"
+        msg: "‘Code Item harus Unik"
       }
     },
     createdAt: {
@@ -19,12 +19,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE(3),
       defaultValue: new Date()
     }
-  }, {
-      classMethods: {
-        associate: function (models) {
-          // associations can be defined here
-        }
-      }
-    });
+  })
+  Item.associate = model => {
+    Item.belongsToMany(model.Supplier, { through: 'SupplierItem' });
+    Item.hasMany(model.SupplierItem);
+
+
+  }
   return Item;
 };
