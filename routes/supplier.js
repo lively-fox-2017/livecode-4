@@ -3,8 +3,12 @@ const router = express.Router()
 const model = require('../models')
 
 router.get('/', (req, res)=>{
-  model.Supplier.findAll().then(dataSupplier=>{
-    // res.send(suppliers);
+  model.Supplier.findAll({
+    include: [{
+      model: model.Item
+    }]
+  }).then(dataSupplier=>{
+    // res.send(dataSupplier);
     res.render('supplier', {suppliers:dataSupplier})
   })
 })
@@ -38,4 +42,5 @@ router.get('/delete/:id', (req, res)=>{
     res.redirect('/suppliers')
   })
 })
+
 module.exports = router;

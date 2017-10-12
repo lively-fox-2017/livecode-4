@@ -10,16 +10,22 @@ router.get('/', (req, res)=>{
 })
 
 router.get('/add', (req, res)=>{
-  res.render('item-add')
+  res.render('item-add', {msg:''})
 })
 
 router.post('/add', (req, res)=>{
-  console.log(req.body);
-  model.Item.create(req.body).then(dataItem=>{
-    res.redirect('/items')
-  }).catch(err=>{
-    res.render('item-add', {msg:'Code Item harus Unik'})
-  })
+  let rgx = /(HP|SW|LP)\d{4}/;
+  if(req.body.codeitem.match(rgx)){
+    model.Item.create(req.body).then(dataItem=>{
+      res.redirect('/items')
+    })
+    .catch(err=>{
+      res.render('item-add', {msg:err.message})
+    })
+  }else{
+    res.render('item-add', {msg:'Code Item harus diawali dengan HP | SW | LP dan diikuti dengan 4 digit angka'})
+  }
+
 })
 
 router.get('/edit/:id', (req, res)=>{

@@ -6,9 +6,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+
       }
     }
   });
+  Supplier.associate = function (models) {
+    // Supplier.hasMany(models.SupplierItem)
+    Supplier.belongsToMany(models.Item, { through: models.SupplierItem })
+  };
   return Supplier;
 };
