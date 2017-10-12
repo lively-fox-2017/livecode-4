@@ -35,5 +35,12 @@ module.exports = (sequelize, DataTypes) => {
     return formatUang(this.price);
   }
 
+  SupplierItem.associate = function(models) {
+
+    SupplierItem.belongsTo(models.Supplier);
+    SupplierItem.belongsTo(models.Item);
+
+  }
+
   return SupplierItem;
 };
