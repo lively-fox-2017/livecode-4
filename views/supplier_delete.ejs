@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/suppliers/delete/<%=dataSupplier.id%>" method="POST">
+      <input type="text" name="name" value="<%=dataSupplier.name%>" readonly ><br>
+      <input type="text" name="kota" value="<%=dataSupplier.kota%>" readonly><br>
+      <input type="submit" value="Delete">
+    </form>
+  </body>
+</html>
