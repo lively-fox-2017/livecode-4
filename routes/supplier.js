@@ -66,14 +66,38 @@ router.get('/delete/:id', function (req, res) {
     res.send(err);
   })
 })
-router.get('/:id/add_items', function (req, res) {
+router.get('/:id/additems', function (req, res) {
   models.Supplier.findById(req.params.id)
   .then(rows=>{
-    models.Items.findAll()
-    .then(rowsItem=>{
-      // res.send(rows)
-      res.render('supplier_list',{data:rows})      
+    models.SupplierItem.findAll({
+      where:{
+        SupplierId:req.params.id
+      },
+      include:[{
+        model: models.Item
+      }]
     })
+    .then(rowsList=>{
+      models.Item.findAll()
+      .then(rowItems=>{
+        // res.send(rowsList)
+        res.render('supplier_add_item',{data:rows,listItems:rowsList,dataItems:rowItems})
+      })
+    })
+  })
+  .catch(err=>{
+    res.send(err);
+  })
+})
+router.post('/:id/additems', function (req, res) {
+  // res.send(req.body);
+  models.SupplierItem.create({
+    SupplierId:req.params.id,
+    ItemId:req.body.ItemId,
+    price:req.body.price
+  })
+  .then(()=>{
+    res.redirect(`/suppliers/${req.params.id}/additems`)
   })
   .catch(err=>{
     res.send(err);

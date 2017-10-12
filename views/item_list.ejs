@@ -13,6 +13,7 @@
         <th>Name</th>
         <th>Brand</th>
         <th>Code Item</th>
+        <th>Supplier</th>
         <th>Options</th>
       </thead>
       <tbody>
@@ -22,6 +23,14 @@
             <td><%=rows.name%></td>
             <td><%=rows.brand%></td>
             <td><%=rows.codeitem%></td>
+            <td>
+              <%if (rows.Suppliers.length==0){%>
+                --No Supplier Yet--
+              <%} else {%>
+              <%rows.Suppliers.forEach(rowsSupplier=>{%>
+                - <%=rowsSupplier.nama%>  @<%=rowsSupplier.SupplierItem.price%><br>
+              <%})}%>
+            </td>
             <td>
               <a href="/items/edit/<%=rows.id%>">Edit</a>
               <a href="#">|</a>

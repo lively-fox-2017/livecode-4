@@ -6,15 +6,36 @@
   </head>
   <body>
     <h1>Add Items</h1>
-    <a href="/items">Return to Items</a>
-    <form class="" action="/items/edit/<%=data.id%>" method="post">
-      Name <br>
-      <input type="text" name="name" value="<%=data.name%>"><br>
-      Brand <br>
-      <input type="text" name="brand" value="<%=data.brand%>"><br>
-      Code Item <br>
-      <input type="text" name="codeitem" value="<%=data.codeitem%>"><br><br>
-      <button type="submit" name="button">Edit Data</button>
+    <a href="/suppliers">Return to Items</a><br>
+
+      Nama <br>
+      <input type="text" name="nama" value="<%=data.nama%>" readonly><br>
+      Kota <br>
+      <input type="text" name="kota" value="<%=data.kota%>" readonly><br>
+      <h3>List Items</h3><br>
+      <table>
+        <tbody>
+          <% if (listItems){listItems.forEach(rows=>{%>
+            <tr>
+              <td>- <%=rows.Item.name%></td>
+              <td>@<%=rows.price%></td>
+            </tr>
+          <%})}%>
+        </tbody>
+      </table><br>
+    <form class="" action="/suppliers/<%=data.id%>/additems" method="post">
+      list Item :<br>
+      <select class="" name="ItemId">
+        <% if (dataItems){dataItems.forEach(rows=>{%>
+          <option value="<%=rows.id%>">
+            <%=rows.name%>
+          </option>
+          </tr>
+        <%})}%>
+      </select><br><br>
+      Price :<br>
+      <input type="text" name="price" value=""><br><br>
+      <button type="submit" name="button">Add Data</button>
     </form>
   </body>
 </html>

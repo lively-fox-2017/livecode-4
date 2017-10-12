@@ -5,7 +5,7 @@
     <title>Supplier</title>
   </head>
   <body>
-    <h1>Items</h1>
+    <h1>Supplier</h1>
     <a href="/">Return to Home</a>
     <table>
       <thead>
@@ -24,14 +24,14 @@
             <td><%=rows.kota%></td>
             <td>
               <%if (rows.Items.length == 0){%>
-                No item yet
+                --No item yet--
               <%} else {%>
                   <%rows.Items.forEach(rowsItem=>{%>
-                  <%=rowsItem.name%><br>
+                    - <%=rowsItem.name%>  @<%=rowsItem.SupplierItem.price%><br>
                 <%})%>
               <%}%>
             </td>
-            <td><a href="/<%=rows.nama%>/add_item">Add Items</a></td>
+            <td><a href="/suppliers/<%=rows.id%>/additems">Add Items</a></td>
             <td>
               <a href="/suppliers/edit/<%=rows.id%>">Edit</a>
               <a href="#">|</a>

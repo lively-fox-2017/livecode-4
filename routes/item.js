@@ -1,11 +1,42 @@
 const express = require('express')
 const router = express.Router();
 const models = require('../models');
+const formatUang = require('../helper/formatUang');
 
 router.get('/', function (req, res) {
-  models.Item.findAll()
+  models.Item.findAll({
+    include:[{
+      model: models.Supplier
+    }]
+  })
   .then(rows=>{
-    res.render('item_list',{data:rows})
+    // console.log(formatUang(123));
+    // console.log(rows[0].Suppliers.SupplierItem)
+    res.send(rows)
+    let promListItem=rows.map(x=>{
+      return new Promise(function(resolve,reject){
+        // console.log('asdfadfasdfsdf');
+        let suppliers=x.Suppliers.map(y=>{
+          console.log('tess');
+          console.log(formatUang(x.SupplierItem.price));
+          y.SupplierItem.price=formatUang(x.SupplierItem.price);
+          return y
+        })
+        x.Suppliers=suppliers;
+        console.log(formatUang(x.Suppliers.SupplierItem.price));
+
+
+        resolve(x);
+      })
+    })
+    Promise.all(promListItem)
+    .then(rowsItems=>{
+      console.log(rowsItems)
+      res.render('item_list',{data:rows})
+    })
+    .catch(err=>{
+      res.send(err)
+    })
   })
   .catch(err=>{
     res.send(err);
