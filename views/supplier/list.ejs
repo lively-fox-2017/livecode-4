@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+	<div class="container">
+	  <h2>Suppliers</h2>  
+	  <h4><a class="pull-right" href="/suppliers/add">Add</a></h4>      
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>Nama</th>
+	        <th>Kota</th>
+	        <th>Options</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    	<%data.forEach(supplier=>{%>
+	      <tr>
+	        <td><%=supplier.name%></td>
+	        <td><%=supplier.kota%></td>
+	        <td><a href="/suppliers/delete/<%=supplier.id%>">Delete</a> | <a href="/suppliers/edit/<%=supplier.id%>">Edit</a></td>
+	      </tr>
+	      <%})%>
+	    </tbody>
+	  </table>
+	</div>
+
+
+
+</body>
+</html>
