@@ -1,0 +1,8 @@
+<%- include('partials/header') %>
+<% if (hasOwnProperty('err')) {%>
+	<p><%=JSON.stringify(err, null, 4)%></p>
+<%}%>
+<form action="/suppliers/add" method="POST">
+	<input type="submit" value="Test">
+</form>
+<%- include('partials/footer') %>

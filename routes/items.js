@@ -15,26 +15,29 @@ router.get('/', (req, res) => {
 
 // tampilkan form input untuk menambahkan item
 router.get('/add', (req, res) => {
-	res.send('Input Form Buat ADD ITEM');
+	res.render('item-add');
 });
 
 // menambahkan item dengan data dari form input /add
 router.post('/add', (req, res) => {
-	const options = {where: {id: req.params.id}};
 	const values = {
-		name: req.body.name,
-		brand: req.body.brand,
-		codeitem: req.body.codeitem,
+		name: 'Ipin X',
+		brand: 'Ipin',
+		codeitem: 'HP0234',
 		createdAt: new Date(),
 		updatedAt: new Date()
 	}
 
-	models.Item.create(values, options)
+	models.Item.create(values)
 	.then(() => {
 		res.redirect('/items');
 	})
 	.catch(err => {
-		if (err) throw err;
+		if (err.name === 'SequelizeValidationError') {
+			res.render('item-add', {err});
+		} else {
+			throw err;
+		}
 	});
 });
 
