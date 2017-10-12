@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Index</title>
+  <style>
+      table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+      }
+      </style>
+</head>
+<body>
+  <a href="/">Home</a>
+  <a href="supplier">Suppliers</a>
+  <a href="item">Items</a>
+  <h1>Supplier</h1>
+  <h2><a href="supplier/add">Add Supplier</a></h3>
+  <br/>
+  <table style="width:80%">
+      <tr>
+        <th>Id</th>
+        <th>Name</th> 
+        <th>Kota</th>
+        <th>List Item</th>
+        <th>Add Item</th>
+        <th colspan="2">Action</th>
+      </tr>
+      <%dataSupplier.forEach(listSupplier=>{%>
+        <tr>
+            <td><%=listSupplier.id%></td>
+            <td><%=listSupplier.name%></td>
+            <td><%=listSupplier.kota%></td>
+            <%if(listSupplier.Items){%>
+              <td>
+                <ol>
+                    <%listSupplier.Items.forEach(nameItem=>{%>
+                  <li><%=nameItem.name%></li>
+                  <%})%>
+                </ol>              
+            </td>
+            <%}else{%>
+              <td>No item yet</td>
+            <%}%>
+            <td><a href="supplier/<%=listSupplier.id%>/additem">Assign Item</a></td>
+            <td><a href="supplier/edit/<%=listSupplier.id%>">Edit</a></td>
+            <td><a href="supplier/delete/<%=listSupplier.id%>">Delete</a></td>
+          </tr>
+      <%})%>
+    </table>
+</body>
+</html>

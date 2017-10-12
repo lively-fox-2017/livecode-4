@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add Item</title>
+</head>
+<body>
+  <h1>Add Item</h1>
+
+<form action="add" method="post">
+    Name:<br>
+    <input type="text" name="name">
+    <br>
+    Brand:<br>
+    <input type="text" name="brand">
+    <br>
+    Kode Item:<br>
+    <input type="text" name="codeitem" pattern="(HP|SW|LP)\d{4}" title="Code Item harus diawali dengan HP | SW | LP dan diikuti dengan 4 digit angka">
+    <br/><br/>
+    <!-- /(HP|SW|LP)\d{4}/ -->
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
