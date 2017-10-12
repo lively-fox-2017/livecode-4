@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head-content %>
+</head>
+<body>
+
+  <div class="container">
+
+    <% include ../partials/navigation %>
+
+    <h1>Add Item for Supplier</h1>
+    <% include ../partials/errors %>
+    <form action="/suppliers/<%= supplier.id %>/additem" method="post">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="ItemId">List Item</label>
+            <select name="ItemId" id="ItemId" class="form-control" autofocus>
+              <option value="">- Choose Item -</option>
+              <% items.forEach((item) => { %>
+
+                  <option value="<%= item.id %>"><%= item.name %></option>
+
+              <% }) %>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" name="price" id="price" class="form-control" autocomplete="off" placeholder="ex: 1000000">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/suppliers" class="btn btn-default">Back</a>
+      </div>
+    </form>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h4>Name</h4>
+            <p><%= supplier.name %></p>
+            <h4>City</h4>
+            <p><%= supplier.kota %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h4>List Item</h4>
+            <% if (supplier.Items.length) { %>
+                <ul>
+                  <% supplier.Items.forEach((item) => { %>
+                      <li><%= item.name %> @ <%= item.SupplierItem.getPrice() %></li>
+                  <% }) %>
+                </ul>
+            <% } else { %>
+                <p>No item yet</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

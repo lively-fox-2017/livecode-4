@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head-content %>
+</head>
+<body>
+
+  <div class="container">
+
+    <% include ../partials/navigation %>
+    <h1>Add an Item</h1>
+    <% include ../partials/errors %>
+    <form action="/items/add" method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" class="form-control" autocomplete="off" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="brand">Brand</label>
+        <input type="text" name="brand" id="brand" class="form-control" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="codeitem">Code Item</label>
+        <input type="text" name="codeitem" id="codeitem" class="form-control" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a href="/items" class="btn btn-default">Cancel</a>
+      </div>
+    </form>
+
+  </div>
+
+</body>
+</html>

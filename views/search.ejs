@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include partials/head-content %>
+</head>
+<body>
+
+  <div class="container">
+
+    <% include partials/navigation %>
+
+    <h1>Search</h1>
+    <form action="/search" method="get">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="name">Nama Item</label>
+            <input type="text" value="<%= (inputs) ? inputs.name : '' %>" name="name" id="name" class="form-control" autocomplete="off" autofocus required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="min">Price Min</label>
+            <input type="number" value="<%= (inputs) ? inputs.min : '' %>" min="1" max="2147483647" name="min" id="min" class="form-control" autocomplete="off" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="min">Price Max</label>
+            <input type="number"  value="<%= (inputs) ? inputs.max : '' %>" min="1" max="2147483647" name="max" id="max" class="form-control" autocomplete="off" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+    <hr>
+    <% if (typeof searchResult !== 'undefined') { %>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Supplier</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% searchResult.forEach((result) => { %>
+
+              <tr>
+                <td><%= result.Item.name %></td>
+                <td><%= result.Supplier.name %></td>
+                <td><%= result.getPrice() %></td>
+              </tr>
+
+          <% }) %>
+
+        </tbody>
+      </table>
+    <% } %>
+
+  </div>
+
+</body>
+</html>

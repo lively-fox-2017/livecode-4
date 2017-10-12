@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head-content %>
+</head>
+<body>
+
+  <div class="container">
+    <% include ../partials/navigation %>
+
+    <h1>Suppliers</h1>
+    <a href="/suppliers/add" class="btn btn-success">Add a Supplier</a>
+    <br>
+    <br>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Kota</th>
+          <th>List Item</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% suppliers.forEach((supplier) => { %>
+
+            <tr>
+              <td><%= supplier.id %></td>
+              <td><%= supplier.name %></td>
+              <td><%= supplier.kota %></td>
+              <td>
+                <% if (supplier.Items.length) { %>
+                    <ul>
+                      <% supplier.Items.forEach((item) => { %>
+                          <li><%= item.name %> @ <%= item.SupplierItem.getPrice() %></li>
+                      <% }) %>
+                    </ul>
+                <% } else { %>
+                    No item yet
+                <% } %>
+              </td>
+              <td>
+                <a href="/suppliers/<%= supplier.id %>/additem" class="btn btn-success">Assign Item</a>
+                <a href="/suppliers/edit/<%= supplier.id %>" class="btn btn-primary">Edit</a>
+                <a href="/suppliers/delete/<%= supplier.id %>" class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+
+        <% }) %>
+
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

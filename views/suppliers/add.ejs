@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head-content %>
+</head>
+<body>
+
+  <div class="container">
+
+    <% include ../partials/navigation %>
+    <h1>Add a Supplier</h1>
+    <% include ../partials/errors %>
+    <form action="/suppliers/add" method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" class="form-control" autocomplete="off" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="kota">Kota</label>
+        <input type="text" name="kota" id="kota" class="form-control" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a href="/suppliers" class="btn btn-default">Cancel</a>
+      </div>
+    </form>
+
+  </div>
+
+</body>
+</html>
