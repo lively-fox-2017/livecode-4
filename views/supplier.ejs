@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <% include ./partials/style %>
+    <title></title>
+  </head>
+  <body>
+    <table style="width:100%">
+ <tr>
+   <th>ID</th>
+   <th>Name</th>
+   <th>Kota</th>
+   <th>List Item</th>
+   <th>Add Item</th>
+   <th>Action</th>
+ </tr>
+ <% dataSupplier.forEach(Supplier=>{%>
+ <tr>
+   <td><%=Supplier.id%></td>
+   <td><%=Supplier.name%></td>
+   <td><%=Supplier.kota%></td>
+   <% if(Supplier.Items){%>
+     <td>
+     <% Supplier.Items.forEach(Item=>{%>
+       <%=Item.name + '@' + Item.SupplierItem.price %><br>
+     <%})  %>
+   </td>
+   <%}else{%>
+     <td>No Item Yet</td>
+   <%}%>
+   <td><a href="/suppliers/<%=Supplier.id%>/additem">Assign Item</a></td>
+   <td><a href="/suppliers/edit/<%=Supplier.id%>">edit</a> | <a href="/suppliers/delete/<%=Supplier.id%>">delete</a> </td>
+ </tr>
+ <%}) %>
+<a href="/suppliers/add">ADD SUPPLIER</a>
+</table>
+  </body>
+</html>

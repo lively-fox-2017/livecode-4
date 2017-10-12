@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/items/delete/<%=dataItem.id%>" method="POST">
+      <input type="text" name="name" value="<%=dataItem.name%>" readonly ><br>
+      <input type="text" name="brand" value="<%=dataItem.brand%>" readonly><br>
+      <input type="text" name="codeitem" value="<%=dataItem.codeitem%>" readonly><br>
+      <input type="submit" value="Delete">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <select name="newItem">
+    <% dataItem.forEach(Item=>{%>
+      <% if (!Item.Suppliers){%>
+        <option value="<%=Item.id%>"><%=Item.name%></option>
+      <%} %>
+    <%}) %>
+
+  </select>
+  </body>
+</html>
