@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ../partial/head%>
+</head>
+<body>
+    <%- include ../partial/menubar%>
+    <div class="container">
+    <h1>List Supplier</h1>
+    <a href="/supplier/add" class="btn btn-success" role="button">Add Supplier</a>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Kota</th>
+                    <th>List Item</th>
+                    <th>Add Item</th>
+                    <th>Action</th>
+                </thead>
+                <%data.forEach(r=>{%>
+                <tbody>
+                    <td><%=r.id%></td>
+                    <td><%=r.name%></td>
+                    <td><%=r.kota%></td>
+                    <%r.Items.map((i, indek)=>{%>
+                    <td>
+                        <%=indek+=1 +' '+i.product()+' @Rp '+i.SupplierItem.price%>
+                    </td>
+                    <%})%>
+                    <td>
+                        <a href="/supplier/<%=r.id%>/additem">ASIGN ITEM</a>
+                    </td>
+                    <td>
+                        <a href="/supplier/edit/<%=r.id%>">EDIT</a>||
+                        <a href="/supplier/delete/<%=r.id%>">DELETE</a>
+                    </td>
+                </tbody>
+                <%})%>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

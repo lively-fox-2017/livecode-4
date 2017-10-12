@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ../partial/head%>
+</head>
+
+<body>
+    <%- include ../partial/menubar%>
+        <div class="container">
+            <h1>List Items</h1>
+            <a href="/item/add" class="btn btn-success" role="button">Add Item</a>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Code Item</th>
+                        <th>List Supplier</th>
+                        <th>Action</th>
+                    </thead>
+                    <%data.forEach(r=>{%>
+                        <tbody>
+                            <td>
+                                <%=r.id%>
+                            </td>
+                            <td>
+                                <%=r.name%>
+                            </td>
+                            <td>
+                                <%=r.brand%>
+                            </td>
+                            <td>
+                                <%=r.codeitem%>
+                            </td>
+                            <td></td>
+                            <td>
+                                <a href="/item/edit/<%=r.id%>">EDIT</a>||
+                                <a href="/item/delete/<%=r.id%>">DELETE</a>
+                            </td>
+                        </tbody>
+                        <%})%>
+                </table>
+            </div>
+
+        </div>
+</body>
+
+</html>

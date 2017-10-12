@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ../partial/head%>
+</head>
+
+<body>
+    <%- include ../partial/menubar%>
+        <div class="container">
+            <h1>Edit Supplier</h1>
+            <a href="/supplier/add" class="btn btn-success" role="button">Add Supplier</a>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+
+                        <th>Name</th>
+                        <th>Kota</th>
+                        <th>Alamat</th>
+                    </thead>
+                    <form action="/supplier/edit/<%=data.id%>" method="post">
+                        <tbody>
+                            <td>
+                                <input type="text" name="name" value="<%=data.name%>">
+                            </td>
+                            <td>
+                                <input type="text" name="kota" value="<%=data.kota%>">
+                            </td>
+                            <td>
+                                <textarea class="form-control" rows="6" name="alamat"><%=data.alamat%></textarea>
+                            </td>
+                            <td>
+                                <input type="submit" value="SAVE">
+                                <a href="/supplier" class="btn btn-danger" role="button">Cancel</a>
+                            </td>
+                        </tbody>
+                    </form>
+                </table>
+            </div>
+
+        </div>
+</body>
+
+</html>
