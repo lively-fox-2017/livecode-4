@@ -4,7 +4,10 @@ const router = express.Router();
 const Model = require('../models');
 
 router.get('/', (req, res) => {
-  Model.Supplier.all({ order: [['name', 'ASC']] }).then((suppliers) => {
+  Model.Supplier.all({
+    include: [ Model.Item ],
+    order: [['name', 'ASC']]
+  }).then((suppliers) => {
     res.render('suppliers/index', {
       suppliers: suppliers
     });

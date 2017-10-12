@@ -18,6 +18,7 @@
           <th>ID</th>
           <th>Name</th>
           <th>Kota</th>
+          <th>List Item</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -29,6 +30,17 @@
               <td><%= supplier.id %></td>
               <td><%= supplier.name %></td>
               <td><%= supplier.kota %></td>
+              <td>
+                <% if (supplier.Items.length) { %>
+                    <ul>
+                      <% supplier.Items.forEach((item) => { %>
+                          <li><%= item.name %> @ <%= item.SupplierItem.price %></li>
+                      <% }) %>
+                    </ul>
+                <% } else { %>
+                    No item yet
+                <% } %>
+              </td>
               <td>
                 <a href="/suppliers/edit/<%= supplier.id %>" class="btn btn-primary">Edit</a>
                 <a href="/suppliers/delete/<%= supplier.id %>" class="btn btn-danger">Delete</a>
