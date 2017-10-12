@@ -15,7 +15,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="name">Nama Item</label>
-            <input type="text" name="name" id="name" class="form-control" autocomplete="off" autofocus required>
+            <input type="text" value="<%= (inputs) ? inputs.name : '' %>" name="name" id="name" class="form-control" autocomplete="off" autofocus required>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="min">Price Min</label>
-            <input type="number" min="1" max="2147483647" name="min" id="min" class="form-control" autocomplete="off" required>
+            <input type="number" value="<%= (inputs) ? inputs.min : '' %>" min="1" max="2147483647" name="min" id="min" class="form-control" autocomplete="off" required>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="min">Price Max</label>
-            <input type="number" min="1" max="2147483647" name="max" id="max" class="form-control" autocomplete="off" required>
+            <input type="number"  value="<%= (inputs) ? inputs.max : '' %>" min="1" max="2147483647" name="max" id="max" class="form-control" autocomplete="off" required>
           </div>
         </div>
       </div>

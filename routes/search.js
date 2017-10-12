@@ -15,12 +15,19 @@ router.get('/', (req, res) => {
       }
     }).then((items) => {
       res.render('search', {
-        searchResult: items
+        searchResult: items,
+        inputs: {
+          name: req.query.name,
+          min: req.query.min,
+          max: req.query.max,
+        }
       });
     });
 
   } else {
-    res.render('search');
+    res.render('search', {
+      inputs: null
+    });
   }
 });
 
