@@ -34,7 +34,7 @@
                 <% if (supplier.Items.length) { %>
                     <ul>
                       <% supplier.Items.forEach((item) => { %>
-                          <li><%= item.name %> @ <%= item.SupplierItem.price %></li>
+                          <li><%= item.name %> @ <%= item.SupplierItem.getPrice() %></li>
                       <% }) %>
                     </ul>
                 <% } else { %>
