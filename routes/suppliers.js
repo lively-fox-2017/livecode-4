@@ -8,7 +8,7 @@ const Op = Sequelize.Op;
 router.get('/', (req, res) => {
 	models.Supplier.findAll()
 	.then(suppliers => {
-		res.send(suppliers);
+		res.render('suppliers', {suppliers});
 	})
 	.catch(err => {
 		if (err) throw err;
@@ -23,8 +23,8 @@ router.get('/add', (req, res) => {
 // menambahkan supplier dengan data dari form input /add
 router.post('/add', (req, res) => {
 	const values = {
-		name: 'PT. AING JUARA',
-		kota: 'Moscow',
+		name: req.body.name,
+		kota: req.body.kota,
 		createdAt: new Date(),
 		updatedAt: new Date()
 	}
@@ -44,7 +44,7 @@ router.get('/edit/:id', (req, res) => {
 
 	models.Supplier.findOne(options)
 	.then(supplier => {
-		res.send(supplier);
+		res.render('supplier-edit', {supplier});
 	})
 	.catch(err => {
 		if (err) throw err;
@@ -88,13 +88,18 @@ router.get('/:id/additem', (req, res) => {
 
 	Promise.all([
 		models.Supplier.findOne(supplierOptions),
-		models.SupplierItem.findAll(supplierItemOptions)
+		models.SupplierItem.findAll(supplierItemOptions),
+		models.Item.findAll()
 		])
 	.then(values => {
 		const supplier = values[0];
 		const supplierItems = values[1];
-
-		res.render('supplier-add-item', {supplier});
+		const items = values[2];
+		const ownedItemIds = supplierItems.map(supplierItem => supplierItem.ItemId);
+		const unOwnedItems = items.filter(item => ownedItemIds.indexOf(item.id) === -1);
+		
+		res.send({supplier, supplierItems, unOwnedItems});
+		// res.render('supplier-add-item', {supplier});
 	})
 	.catch(err => {
 		if (err) throw err;
@@ -104,15 +109,16 @@ router.get('/:id/additem', (req, res) => {
 router.post('/:id/additem', (req, res) => {
 	const values = {
 		SupplierId: 1/*req.params.id*/,
-		ItemId: 1/*req.body.itemId*/,
+		ItemId: 2/*req.body.itemId*/,
 		price: 1000000/*req.body.price*/
 	}
 	models.SupplierItem.create(values)
 	.then(() => {
-		res.redirect()
+		res.redirect('/suppliers');
 	})
 	.catch(err => {
 		if (err) throw err;
 	});
 });
+
 module.exports = router;

@@ -3,6 +3,13 @@
 	<p><%=JSON.stringify(err, null, 4)%></p>
 <%}%>
 <form action="/items/add" method="POST">
-	<input type="submit" value="Test">
+	Name:<br><input type="text" name="name">
+	<br>
+	Brand:<br><input type="text" name="brand">
+	<br>
+	Code Item:<br><input type="text" name="codeitem">
+	<br>
+	<br>
+	<input type="submit" value="Add Item">
 </form>
 <%- include('partials/footer') %>

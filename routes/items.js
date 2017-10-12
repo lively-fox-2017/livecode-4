@@ -6,7 +6,7 @@ const models = require('./../models')
 router.get('/', (req, res) => {
 	models.Item.findAll()
 	.then(items => {
-		res.send(items);
+		res.render('items', {items});
 	})
 	.catch(err => {
 		if (err) throw err;
@@ -21,9 +21,9 @@ router.get('/add', (req, res) => {
 // menambahkan item dengan data dari form input /add
 router.post('/add', (req, res) => {
 	const values = {
-		name: 'Ipin X',
-		brand: 'Ipin',
-		codeitem: 'HP0234',
+		name: req.body.name,
+		brand: req.body.brand,
+		codeitem: req.body.codeitem,
 		createdAt: new Date(),
 		updatedAt: new Date()
 	}
@@ -44,10 +44,9 @@ router.post('/add', (req, res) => {
 // menampilkan form data item berdasarkan id
 router.get('/edit/:id', (req, res) => {
 	const options = {where: {id: req.params.id}};
-
 	models.Item.findOne(options)
 	.then(item => {
-		res.send(item);
+		res.render('item-edit', {item});
 	})
 	.catch(err => {
 		if (err) throw err;
@@ -69,12 +68,19 @@ router.post('/edit/:id', (req, res) => {
 		res.redirect('/items');
 	})
 	.catch(err => {
-		if (err) throw err;
+		if (err.name === 'SequelizeValidationError') {
+			let item = values;
+			item.id = req.params.id;
+			console.log(item);
+			res.render('item-edit', {err, item});
+		} else {
+			throw err;
+		}
 	});
 });
 
 // delete data item berdasarkan id
-router.delete('/delete/:id', (req, res) => {
+router.get('/delete/:id', (req, res) => {
 	const options = {where: {id: req.params.id}};
 
 	models.Item.destroy(options)

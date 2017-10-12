@@ -6,16 +6,25 @@ module.exports = (sequelize, DataTypes) => {
     codeitem: {
       type: DataTypes.STRING,
       validate: {
-        is: {
-          args: ['(HP|SW|LP)\d{4}'],
-          msg: 'Code Item harus diawali dengan HP | SW | LP dan diikuti dengan 4 digit angka'
+        isValid: function(value, next) {
+          if (/(HP|SW|LP)\d{4}/.test(value)) {
+            console.log(/(HP|SW|LP)\d{4}/.test(value));
+            next();
+          } else {
+            next('Code Item harus diawali dengan HP | SW | LP dan diikuti dengan 4 digit angka')
+          }
         },
+        // is: {
+        //   args: ["(HP|SW|LP)\d{4}"],
+        //   msg: 'Code Item harus diawali dengan HP | SW | LP dan diikuti dengan 4 digit angka'
+        // },
         isUnique: function(value, next) {
           const options = {
             where: {
               codeitem: value, 
               id: {
-                [sequelize.Op.not]: this.id
+                [sequelize.Op.notIn]: [this.id]
+                // [sequelize.Op.ne]: this.id
               }
             }
           }

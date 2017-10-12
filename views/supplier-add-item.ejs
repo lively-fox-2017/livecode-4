@@ -3,7 +3,6 @@
 	<p><%=JSON.stringify(err, null, 4)%></p>
 <%}%>
 <form action="/suppliers/<%= supplier.id %>/additem" method="POST">
-	<%= supplier.id %>
-	<input type="submit" value="Test">
+	<input type="submit" value="POST">
 </form>
 <%- include('partials/footer') %>
