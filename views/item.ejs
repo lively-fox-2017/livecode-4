@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <table border="2px">
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>brand</th>
+        <th>codeitem</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <%dataItem.forEach(data=>{%>
+          <tr>
+            <td><%=data.id%></td>
+            <td><%=data.name%></td>
+            <td><%=data.brand%></td>
+            <td><%=data.codeitem%></td>
+              <td><a href="/item/add">add</a>
+              <a href="/item/edit/<%=data.id%>">Edit</a>
+              <a href="/item/delete/<%=data.id%>">Delete</a></td>
+          </tr>
+          <%})%>
+      </tbody>
+    </table>
+  </body>
+</html>

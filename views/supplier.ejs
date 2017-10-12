@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table border="2px">
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Kota</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <%dataSupplier.forEach(dataSup=>{%>
+          <tr>
+            <td><%=dataSup.id%></td>
+            <td><%=dataSup.name%></td>
+            <td><%=dataSup.kota%></td>
+              <td><a href="/supplier/add">add</a>
+              <a href="/supplier/edit/<%=dataSup.id%>">Edit</a>
+              <a href="/supplier/delete/<%=dataSup.id%>">Delete</a></td>
+
+          </tr>
+          <%})%>
+      </tbody>
+    </table>
+  </body>
+</html>
