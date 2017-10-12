@@ -10,13 +10,17 @@
         <th>id</th>
         <th>name</th>
         <th>Kota</th>
+        <th>List Item</th>
+        <th>Add Item</th>
       </tr>
       <%for(var i = 0; i < dataSupplier.length; i++) {%>
       <tr>
         <td><%=dataSupplier[i].id%></td>
         <td><%=dataSupplier[i].name%></td>
         <td><%=dataSupplier[i].kota%></td>
-        <td><a href="#">edit</a></td>
+        <td></td>
+        <td><a href="#">Assign Item</a></td>
+        <td><a href="/suppliers/edit/<%=dataSupplier[i].id%>">edit</a></td>
         <td><a href="/suppliers/delete/<%=dataSupplier[i].id%>">hapus</a></td>
       </tr>
       <%}%>

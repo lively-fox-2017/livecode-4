@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Daftar item</h1>
+    <table>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>brand</th>
+      </tr>
+      <%for(var i = 0; i < dataItem.length; i++) {%>
+      <tr>
+        <td><%=dataItem[i].id%></td>
+        <td><%=dataItem[i].name%></td>
+        <td><%=dataItem[i].brand%></td>
+        <td><%=dataItem[i].codeitem%></td>
+        <td><a href="/items/edit/<%=dataItem[i].id%>">edit</a></td>
+        <td><a href="/items/delete/<%=dataItem[i].id%>">delete</a></td>
+      </tr>
+      <%}%>
+    </table>
+  </body>
+</html>
