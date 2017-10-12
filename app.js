@@ -19,6 +19,8 @@ app.use('/', index)
 const supplier = require('./routes/supplier')
 app.use('/suppliers', supplier)
 
+const item = require('./routes/item')
+app.use('/items', item)
 
 
 app.listen(3000, function () {

@@ -41,7 +41,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h3>List Suppliers</h3>
+          <h3>List Items</h3>
         </div>
       </div>
       <div class="row">
@@ -50,20 +50,21 @@
             <thead>
               <th>No</th>
               <th>Name</th>
-              <th>Kota</th>
+              <th>Brand</th>
+              <th>Kode Item</th>
               <th>Options</th>
             </thead>
             <% var i = 1
-              suppliers.forEach(function(item){ %>
+              items.forEach(function(item){ %>
             <tbody>
               <td><%= i %></td>
               <td><%= item.name%></td>
-              <td><%= item.kota %></td>
-
+              <td><%= item.brand %></td>
+              <td><%= item.kodeitem %></td>
               <td>
 
-                <a href="/suppliers/edit/<%= item.id %>">Edit</a> |
-                <a href="/suppliers/delete/<%= item.id %>" onclick="return confirm('delete this Supplier?')">Delete</a>
+                <a href="/items/edit/<%= item.id %>">Edit</a> |
+                <a href="/items/delete/<%= item.id %>" onclick="return confirm('delete this item?')">Delete</a>
               </td>
             </tbody>
             <% i++ }) %>
@@ -72,7 +73,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <a href="/suppliers/add" style="margin-top:20px; display:inline-block"> << Add suppliers >></a>
+          <a href="/items/add" style="margin-top:20px; display:inline-block"> << Add items >></a>
         </div>
       </div>
     </div>
