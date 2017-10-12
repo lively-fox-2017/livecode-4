@@ -4,10 +4,15 @@ const router = express.Router()
 const models = require('../models')
 
 router.get('/',(req,res)=>{
-  models.Supplier.findAll().then(dataSupplier=>{
+  let condition={
+    include:[models.Item]
+  }
+  models.Supplier.findAll(condition).then(dataSupplier=>{
+    // res.send(dataSupplier)
     res.render('supplier',{dataSupplier:dataSupplier})
   })
 })
+
 
 router.get('/add',(req,res)=>{
   res.render('supplier_add')
@@ -60,5 +65,15 @@ router.post('/delete/:id', (req,res)=>{
   })
 })
 
+
+router.get('/:id/additem',(req,res)=>{
+  let condition={
+    include:[models.Supplier]
+  }
+  models.Item.findAll(condition).then(dataItem=>{
+    res.send(dataItem)
+    // res.render('supplier_additem',{dataSupplier:dataSupplier})
+  })
+})
 
 module.exports = router

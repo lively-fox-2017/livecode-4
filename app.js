@@ -13,6 +13,9 @@ const items = require('./routes/items')
 var ejs = require('ejs')
 app.set('view engine','ejs')
 
+app.get('/',(req,res)=>{
+  res.redirect('/suppliers')
+})
 
 app.use('/suppliers', suppliers);
 app.use('/items', items);
