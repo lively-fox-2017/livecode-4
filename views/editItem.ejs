@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= title %></title>
+</head>
+<body>
+
+  <h3>Welcome, ? (ADD ITEM)</h3>
+
+  <% if(regErr){ %>
+    <p style="color:red; font-size:13px"><%= regErr %></p>
+  <% }else if(dataErr){ %>
+    <p style="color:red; font-size:13px"><%= dataErr.message %></p>
+  <% } %>
+
+  <form action="/items/edit/<%= data.id %>" method="post">
+    <table>
+      <tr>
+        <td>Name: </td>
+        <td>
+          <input type="text" name="name" value="<%= data.name %>">
+        </td>
+      </tr>
+      <tr>
+        <td>Brand: </td>
+        <td>
+          <input type="text" name="brand" value="<%= data.brand %>">
+        </td>
+      </tr>
+      <tr>
+        <td>Code Item: </td>
+        <td>
+          <input style="text-transform:uppercase" type="text" name="codeitem" value="<%= data.codeitem %>">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" value="Submit">
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <br>
+
+  <a href="/items"> << back to items </a>
+
+</body>
+</html>

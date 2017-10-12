@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= title %></title>
+</head>
+<body>
+
+  <h3>Welcome, ? (ITEMS)</h3>
+
+  <a href="/items/add" style="margin-bottom:20px; display:inline-block">Add Item</a>
+
+  <table border="1" cellpadding="5">
+    <thead>
+      <th>No</th>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Code Item</th>
+      <th>Action</th>
+    </thead>
+    <% let i = 1
+      data.forEach(r => { %>
+      <tbody>
+        <td><%= i %></td>
+        <td><%= r.name %></td>
+        <td><%= r.brand %></td>
+        <td><%= r.codeitem %></td>
+        <td>
+          <a href="/items/edit/<%= r.id %>">Edit</a>
+          <a href="/items/delete/<%= r.id %>">Delete</a>
+        </td>
+      </tbody>
+    <% i++ }) %>
+  </table>
+
+  <br>
+
+  <a href="/"> << back to home </a>
+
+</body>
+</html>

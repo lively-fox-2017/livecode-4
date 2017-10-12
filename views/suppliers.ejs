@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= title %></title>
+</head>
+<body>
+
+  <h3>Welcome, ?(SUPPLIERS)</h3>
+
+  <a href="/suppliers/add" style="margin-bottom:20px; display:inline-block">Add Supplier</a>
+
+  <table border="1" cellpadding="5">
+    <thead>
+      <th>No</th>
+      <th>Name</th>
+      <th>Kota</th>
+      <th>List Item</th>
+      <th>Add Item</th>
+      <th>Action</th>
+    </thead>
+    <% let i = 1
+      data.forEach(r => { %>
+      <tbody>
+        <td><%= i %></td>
+        <td><%= r.name %></td>
+        <td><%= r.kota %></td>
+        <% if(r.Items){ %>
+          <td>
+            <% let j = 1
+              r.Items.forEach(ri => { %>
+                <%= j %>. <%= ri.name %>
+            <% j++ }) %>
+          </td>
+        <% }else{ %>
+          <td>
+            <span style="color:red">No Item Yet</span>
+          </td>
+        <% } %>
+        <td>
+          <a href="/suppliers/add-item/<%= r.id %>">Add Item</a>
+        </td>
+        <td>
+          <a href="/suppliers/edit/<%= r.id %>">Edit</a>
+          <a href="/suppliers/delete/<%= r.id %>">Delete</a>
+        </td>
+      </tbody>
+    <% i++ }) %>
+  </table>
+
+  <br>
+
+  <a href="/"> << back to home </a>
+
+</body>
+</html>
