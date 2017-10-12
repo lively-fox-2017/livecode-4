@@ -3,7 +3,7 @@ const router = express.Router();
 const model = require('../models');
 
 router.get('/', (req, res)=>{
-  model.Supplier.findAll()
+  model.Supplier.findAll({order:[['id', 'ASC']]})
   .then(dataSuppliers=>{
     res.render('suppliers', {dataSuppliers})
   })
@@ -45,8 +45,18 @@ router.post('/edit/:id', (req, res)=>{
     name: req.body.name,
     kota: req.body.kota
   },{
-    where: {id:[[req.params.id]]}
+    where: {id:req.params.id}
   })
+  .then(()=>{
+    res.redirect('/suppliers')
+  })
+  .catch(err=>{
+    res.send(err)
+  })
+})
+
+router.get('/delete/:id', (req, res)=>{
+  model.Supplier.destroy({where: {id:req.params.id}})
   .then(()=>{
     res.redirect('/suppliers')
   })

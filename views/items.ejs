@@ -5,27 +5,27 @@
     <title></title>
   </head>
   <body>
-    <a href="/suppliers/add">Add Suppliers</a>
+    <a href="/items/add">Add Items</a>
     <table border="1" style="width:30%">
     <thead>
       <tr>
         <th>Id</th>
         <th>Name</th>
-        <th>Kota</th>
-        <th>list Item</th>
+        <th>Brand</th>
+        <th>Codeitem</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <%dataSuppliers.forEach(data => {%>
+      <%dataItems.forEach(data => {%>
         <tr>
           <td><%=data.id%></td>
           <td><%=data.name%></td>
-          <td><%=data.kota%></td>
-          <td><%=data.item_name%></td>
+          <td><%=data.brand%></td>
+          <td><%=data.codeitem%></td>
           <td>
-            <a href="/suppliers/edit/<%=data.id%>">Edit</a>
-            <a href="/suppliers/delete/<%=data.id%>">Delete</a>
+            <a href="/items/edit/<%=data.id%>">Edit</a>
+            <a href="/items/delete/<%=data.id%>">Delete</a>
           </td>
         </tr>
       <%})%>
