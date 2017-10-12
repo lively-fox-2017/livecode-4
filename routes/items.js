@@ -76,6 +76,8 @@ router.post('/', function(req,res) {
             // res.render('items/items', {dataItem: fixDataitem, dataError:null})
           })
         })
+      } else if (err.message == 'Pesan Error: Code Item harus Unik') {
+        res.redirect('/items', {dataError:'Pesan Error: Code Item harus Unik'})
       }
     }
   })
@@ -95,7 +97,7 @@ router.get('/delete/:id', function(req,res) {
 router.get('/edit/:id', function(req,res) {
   Model.Item.findById(req.params.id)
   .then(dataItem => {
-    res.render('items/edit', {dataItem:dataItem})
+    res.render('items/edit', {dataItem:dataItem, dataError:null})
   })
 })
 
@@ -114,7 +116,17 @@ router.post('/edit/:id', function(req,res) {
     res.redirect('/items')
   })
   .catch(err => {
-    res.send(err)
+    // res.send(err)
+    if (err) {
+      if (err.message == 'Validation error: Code Item harus diawali dengan HP | SW | LP dan diikuti’ dengan 4 digit angka') {
+        Model.Item.findById(req.params.id)
+        .then(dataItem => {
+          res.render('items/edit', {dataItem:data, dataError:'Code Item harus diawali dengan HP | SW | LP dan diikuti’ dengan 4 digit angka'})
+        })
+      } else if (err.message == 'Pesan Error: Code Item harus Unik') {
+        res.redirect('/items/edit', {dataError:'Pesan Error: Code Item harus Unik'})
+      }
+    }
   })
 })
 

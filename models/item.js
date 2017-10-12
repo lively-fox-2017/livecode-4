@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       unique: {
         args: true,
-        message: 'Pesan Error: ‘Code Item harus Unik’',
+        msg: 'Pesan Error: Code Item harus Unik'
         // fields: [sequelize.fn('lower', sequelize.col('codeitem'))]
       },
       validate: {
@@ -23,6 +23,8 @@ module.exports = function(sequelize, DataTypes) {
   })
   Item.associate = function(models) {
     Item.belongsTo(models.Supplier, {foreignKey:"SupplierId"})
+    Item.belongsToMany(models.Supplier, {through: 'SupplierItem'})
+    Item.hasMany(models.SupplierItem)
   }
   return Item;
 };

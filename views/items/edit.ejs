@@ -10,6 +10,12 @@
   </head>
   <body>
     <div class="container">
+      <% if (dataError) { %>
+        <div class="alert alert-danger alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Perhatian!</strong> Code Item harus diawali dengan HP | SW | LP dan diikuti’ dengan 4 digit angka dan UNIQUE
+        </div>
+      <% } %>
       <h2 class="heading"><strong>Halaman Edit Item</strong></h2>
     <br>
     <form action="/items/edit/<%= dataItem.id %>" method="post">

@@ -94,6 +94,20 @@ router.post('/edit/:id', function(req,res) {
   })
 })
 
+router.get('/assign/:id', function(req,res) {
+  Model.Supplier.findById(req.params.id)
+  .then(dataSupplier => {
+    Model.Item.findAll()
+    .then(dataItem => {
+      // res.send(dataItem)
+      res.render('suppliers/assign', { dataSupplier: dataSupplier, dataItem: dataItem})
+    })
+  })
+  .catch(err => {
+    res.send(err)
+  })
+})
+
 
 
 module.exports = router

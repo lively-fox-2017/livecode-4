@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>PJAP17</title>
+    <style media="screen">
+
+    .custom {
+        width: 120px !important;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center"><strong>ADD ITEM FOR SUPPLIER</strong></h2>
+      <br>
+        <h4 class="text-center">Nama : <%= dataSupplier.name %></h4>
+        <h4 class="text-center">Kota : <%= dataSupplier.kota %></h4>
+        <form action="/suppliers/assign/<%= dataSupplier.id %>" method="post">
+          <div class="form-group">
+              <label for="item">Select Item Name : </label>
+              <!-- <% dataItem.forEach(item => { %>
+                <select class="form-control" id="item">
+                  <option value="<%= item.id"><%= item.name% ></option>
+                </select>
+              <% }) %> -->
+          <div class="form-group">
+            <label for="kota">Kota :</label>
+            <input type="text" class="form-control" name="kota" value="<%= dataSupplier.kota %>" required>
+          </div>
+      </div>
+  </body>
+</html>
