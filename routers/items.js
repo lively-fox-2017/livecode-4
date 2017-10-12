@@ -8,7 +8,7 @@ let model = require('../models');
 // CREATE
 router.get('/add', function(req,res){
   model.Item.findAll().then(data_Items =>{
-    res.render('items-add', {data_ItemsToEjs:data_Items})
+    res.render('items-add', {pesanError: null, data_ItemsToEjs:data_Items})
   })
 })
 
@@ -18,7 +18,8 @@ router.post('/add', function(req,res){
     brand : req.body.items_brand,
     codeitem : req.body.items_codeitem
   }).then(data_Items =>{
-    res.redirect('../../items')
+    // res.redirect('../../items')
+    re.render('items-add',{pesanError: 'Code Item harus Unik'})
   })
 })
 
@@ -32,7 +33,7 @@ router.get('/', function(req,res){
 // UPDATE
 router.get('/edit/:id', function(req,res){
   model.Item.findById(req.params.id).then(data_Items =>{
-    res.render('items-edit', {data_ItemsToEjs:data_Items})
+    res.render('items-edit', {pesanError: null, data_ItemsToEjs:data_Items})
   })
 })
 
@@ -42,7 +43,8 @@ router.post('/edit/:id', function(req,res){
     brand : req.body.items_brand,
     codeitem : req.body.items_codeitem
   },{where:{id:req.params.id}}).then(data_Items =>{
-    res.redirect('../../items')
+    // res.redirect('../../items')
+    re.render('items-edit',{pesanError: 'Code Item harus Unik'})
   })
 })
 

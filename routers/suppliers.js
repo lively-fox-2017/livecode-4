@@ -22,7 +22,10 @@ router.post('/add', function(req,res){
 
 // READ
 router.get('/', function(req,res){
-  model.Supplier.findAll().then(data_Suppliers =>{
+  model.Supplier.findAll({
+    include: [model.SupplierItem]
+  }).then(data_Suppliers =>{
+    // res.send(data_Suppliers)
     res.render('suppliers', {data_SuppliersToEjs:data_Suppliers})
   })
 })
@@ -47,6 +50,17 @@ router.post('/edit/:id', function(req,res){
 router.get('/delete/:id', function(req,res){
   model.Supplier.destroy({where:{id:req.params.id}}).then(data_Suppliers => {
     res.redirect('../../suppliers')
+  })
+})
+
+// ========================== add item for supplier ====//
+
+router.get('/:id/additem', function(req,res){
+  model.Supplier.findAll({
+    include: [model.SupplierItem]
+  }).then(data_Suppliers =>{
+    // res.send(data_Suppliers)
+    res.render('suppliers-additem', {data_SuppliersToEjs:data_Suppliers})
   })
 })
 
