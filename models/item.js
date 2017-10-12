@@ -42,5 +42,16 @@ module.exports = (sequelize, DataTypes) => {
 
   }
 
+  Item.hook('beforeDestroy', (item, options) => {
+
+    const Model = require('./index');
+    Model.SupplierItem.destroy({
+      where: { ItemId: item.id }
+    }).then(() => {
+      return true;
+    });
+
+  });
+
   return Item;
 };

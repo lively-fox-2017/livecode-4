@@ -72,7 +72,10 @@ router.get('/delete/:id', (req, res) => {
   Model.Item.findById(req.params.id).then((item) => {
     if (!item) { res.redirect('/items') }
     else {
-      Model.Item.destroy({ where: { id: req.params.id } }).then(() => {
+      Model.Item.destroy({
+        where: { id: req.params.id },
+        individualHooks: true
+      }).then(() => {
         res.redirect('/items');
       });
     }

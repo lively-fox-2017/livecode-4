@@ -128,7 +128,10 @@ router.get('/delete/:id', (req, res) => {
   Model.Supplier.findById(req.params.id).then((supplier) => {
     if (!supplier) { res.redirect('/suppliers') }
     else {
-      Model.Supplier.destroy({ where: { id: req.params.id } }).then(() => {
+      Model.Supplier.destroy({
+        where: { id: req.params.id },
+        individualHooks: true
+      }).then(() => {
         res.redirect('/suppliers');
       });
     }
