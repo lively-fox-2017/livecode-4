@@ -1,0 +1,49 @@
+<html>
+        <head>
+                <script>
+                    function formatuang (number){
+                        reverse = number.toString().split('').reverse();
+                        arr= [];
+                        for(var i = 0; i<reverse.length;i++){
+                            if((i+1) % 3 === 0 && (i+1) !== reverse.length){
+                            arr.push(reverse[i]);
+                            arr.push('.');
+                            }else{
+                            arr.push(reverse[i]);
+                            }
+                        }
+                        document.write('Rp. '+arr.reverse().join(''))
+                        // return 'Rp. '+arr.reverse().join('');
+                        }
+                    </script>
+            </head>
+        <body>
+            <%- include ./partial/menu.ejs%>
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Code Item</th>
+                    <th>Supplier</th>
+                </tr>
+                
+                    <%data.forEach(d => {%>
+                        <tr>
+                            <td><%=d.id%></td>
+                            <td><%=d.name%></td>
+                            <td><%=d.brand%></td>
+                            <td><%=d.codeitem%></td>
+                            <td><%d.Suppliers.forEach(x => {%>
+                                <%=x.name%> @
+                                <script>formatuang(`<%=x.SupplierItem.price%>`)</script>
+                            <%})%></td>
+                            <td><a href='/item/edit/<%=d.id%>'>Edit</a></td>
+                            <td><a href='/item/delete/<%=d.id%>'>Delete</a></td>
+                        </tr>
+                       
+                    <%})%>
+            </table>
+            <a href='/item/add'>Add an item</a>
+        </body>
+    </html>

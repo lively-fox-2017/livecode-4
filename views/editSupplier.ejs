@@ -1,0 +1,10 @@
+<html>
+        <body>
+            <%- include ./partial/menu.ejs%>
+            <form action="/suppliers/edit/<%=id%>" method='post'>
+                <input type='text' name='name'>
+                <input type='text' name='kota'>
+                <input type='submit' value='submit'>
+            </form>
+        </body>
+    </html>
