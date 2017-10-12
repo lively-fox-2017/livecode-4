@@ -57,7 +57,8 @@ router.post('/edit/:id', (req, res) => {
         res.redirect('/items');
       }).catch((err) => {
         res.render('items/edit', {
-          errors: err.errors
+          errors: err.errors,
+          item: item
         });
       });
     }

@@ -1,8 +1,22 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Supplier = sequelize.define('Supplier', {
-    name: DataTypes.STRING,
-    kota: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Name harus diisi'
+        }
+      }
+    },
+    kota: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Kota harus diisi'
+        }
+      }
+    }
   });
   return Supplier;
 };

@@ -55,7 +55,8 @@ router.post('/edit/:id', (req, res) => {
         res.redirect('/suppliers');
       }).catch((err) => {
         res.render('suppliers/edit', {
-          errors: err.errors
+          errors: err.errors,
+          supplier: supplier
         });
       });
     }

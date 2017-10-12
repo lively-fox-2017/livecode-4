@@ -9,6 +9,7 @@
 
     <% include ../partials/navigation %>
     <h1>Edit a Supplier</h1>
+    <% include ../partials/errors %>
     <form action="/suppliers/edit/<%= supplier.id %>" method="post">
       <div class="form-group">
         <label for="name">Name</label>

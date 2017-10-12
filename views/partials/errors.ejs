@@ -1,0 +1,11 @@
+<% if (typeof errors !== 'undefined') { %>
+
+    <div class="alert alert-danger">
+      <ul>
+        <% errors.forEach((error) => { %>
+          <li><%= error.message %></li>
+        <% }) %>
+      </ul>
+    </div>
+
+<% } %>
