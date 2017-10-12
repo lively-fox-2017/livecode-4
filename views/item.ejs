@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/items">Items</a></li>
+		<li><a href="/suppliers">Suppliers</a></li>
+	</ul>
+	<p><a href="/items/add">Add Items</a></p>
+	<table>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Brand</th>
+		<th>Code Item</th>
+		<th>Action</th>
+		<%data.forEach(i => {%>
+		<tr>
+			<td><%-i.id%></td>
+			<td><%-i.name%></td>
+			<td><%-i.brand%></td>
+			<td><%-i.codeitem%></td>
+			<td><a href="/items/edit/<%-i.id%>">Edit</td>
+			<td><a href="/items/delete/<%-i.id%>">Delete</td>
+		</tr>
+		<%})%>
+	</table>
+</body>
+</html>
