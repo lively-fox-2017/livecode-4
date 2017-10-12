@@ -10,7 +10,49 @@
 
   <h3>Welcome, ? (ADD SUPPLIER ITEM)</h3>
 
-  
+  <form action="/suppliers/add-item/<%= dataSup[0].id %>" method="post">
+    <table>
+      <tr>
+        <td>Name: </td>
+        <td>
+          <input type="text" name="name" value="<%= dataSup[0].name %>" readonly>
+        </td>
+      </tr>
+      <tr>
+        <td>Kota: </td>
+        <td>
+          <input type="text" name="kota" value="<%= dataSup[0].kota %>" readonly>
+        </td>
+      </tr>
+      <tr>
+        <td>Items: </td>
+        <td>
+          <select name="itemID">
+            <option value=""> - choose - </option>
+            <% dataItem.forEach(r => { %>
+              <option value="<%= r.id %>"><%= r.name %></option>
+            <% }) %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Price: </td>
+        <td>
+          <input type="text" name="price" placeholder="eg: 1234567890">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" value="Submit">
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <br>
+
+  <a href="/suppliers"> << back to suppliers </a>
 
 </body>
 </html>

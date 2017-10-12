@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
       data: supp,
       title: 'Suppliers Page'
     })
-    // res.send(supp)
   })
 })
 
@@ -27,9 +26,23 @@ router.get('/add-item/:id', (req, res) => {
     Models.Item.findAll()
     .then(item => {
       res.render('addSupplierItem', {
-
+        dataSup: sup,
+        dataItem: item,
+        title: 'Add Supplier Item'
       })
     })
+  })
+})
+
+router.post('/add-item/:id', (req, res) => {
+  Models.SupplierItem.create({
+    SupplierId: req.params.id,
+    ItemId: req.body.itemID,
+    price: req.body.price
+  })
+  .then(supitem => {
+    // res.send(supitem.curFormat())
+    res.redirect('/suppliers')
   })
 })
 

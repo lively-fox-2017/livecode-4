@@ -4,7 +4,11 @@ const Models = require('../models')
 const helpers = require('../helpers/items/codeItem')
 
 router.get('/', (req, res) => {
-  Models.Item.findAll()
+  Models.Item.findAll({
+    include: [{
+      model: Models.Supplier
+    }]
+  })
   .then(items => {
     res.render('item', {
       data: items,

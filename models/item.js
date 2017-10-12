@@ -18,6 +18,8 @@ module.exports = function(sequelize, DataTypes) {
 
   Item.associate = function(models){
     Item.belongsTo(models.Supplier, {foreignKey: 'supplierId'})
+    Item.hasMany(models.SupplierItem, {foreignKey: 'ItemId'})
+    // Item.belongsToMany(models.Supplier, {through: 'SupplierItem', foreignKey: 'ItemId'})
   }
 
   Item.prototype.upper = function(code){

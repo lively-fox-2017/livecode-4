@@ -18,6 +18,7 @@
       <th>Name</th>
       <th>Brand</th>
       <th>Code Item</th>
+      <th>List Supplier</th>
       <th>Action</th>
     </thead>
     <% let i = 1
@@ -27,6 +28,15 @@
         <td><%= r.name %></td>
         <td><%= r.brand %></td>
         <td><%= r.codeitem %></td>
+        <% if(r.Supplier){ %>
+          <td>
+            <%= r.Supplier.name %>
+          </td>
+        <% }else{ %>
+          <td>
+            <span style="color:red">No Supplier Yet</span>
+          </td>
+        <% } %>
         <td>
           <a href="/items/edit/<%= r.id %>">Edit</a>
           <a href="/items/delete/<%= r.id %>">Delete</a>
