@@ -26,8 +26,8 @@
           <td>
               <% if(supplier.Supplieritems.length != 0) { %>
                 <ul>
-                <% supplier.Supplieritems.forEach(supitem => { %>
-                  <li><%= supitem %></li>
+                <% supplier.Items.forEach(supitem => { %>
+                  <li><%= supitem.name %></li>
                 <% }) %>
                 </ul>
               <% } else { %>

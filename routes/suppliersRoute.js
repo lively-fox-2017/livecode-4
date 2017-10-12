@@ -4,13 +4,14 @@ const model = require('../models');
 
 router.get('/', (req, res) => {
   model.Supplier.findAll({
-      include: ['Supplieritems']
+      include: ['Supplieritems', 'Items']
     })
     .then(suppliers => {
       res.render('show_list_suppliers', {
         title: 'List Suppliers',
         suppliers: suppliers
       });
+      // res.send(suppliers);
     })
 });
 
@@ -75,7 +76,7 @@ router.get('/:id/additem', (req, res) => {
         where: {
           id: req.params.id,
         },
-        include: ['Supplieritems']
+        include: ['Supplieritems', 'Items']
       }),
       model.Item.findAll()
     ])
@@ -85,6 +86,10 @@ router.get('/:id/additem', (req, res) => {
         supplier: values[0],
         items: values[1]
       });
+      // res.send(values[0]);
+    })
+    .catch(reason => {
+      console.log(reason);
     })
 });
 

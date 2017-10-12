@@ -3,7 +3,9 @@ const router = express.Router();
 const model = require('../models');
 
 router.get('/', (req, res) => {
-  model.Item.findAll()
+  model.Item.findAll({
+      include: ['Suppliers']
+    })
     .then(items => {
       res.render('show_list_items', {
         title: 'List Items',

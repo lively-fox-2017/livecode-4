@@ -38,5 +38,16 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+  Item.associate = function(models) {
+    Item.belongsToMany(models.Supplier, {
+      through: 'Supplieritem',
+      foreignKey: 'itemId',
+      otherKey: 'supplierId',
+    });
+    Item.hasMany(models.Supplieritem, {
+      foreignKey: 'itemId',
+      sourceKey: 'id',
+    })
+  }
   return Item;
 };
