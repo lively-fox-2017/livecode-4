@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/items">Items</a></li>
+		<li><a href="/suppliers">Suppliers</a></li>
+	</ul>
+	<h3>Add item for supplier</h3>
+	<p>Name : <%-row_supplier.name%></p>	
+	<p>City : <%-row_supplier.kota%></p>
+	<p>List Item</p>
+	<select name="ItemId">
+	<%row_items.forEach(i => {%>
+	<option value="<%-i.id%>"><%-i.name%></option>
+	
+	<%})%>
+	</select>	
+</body>
+</html>

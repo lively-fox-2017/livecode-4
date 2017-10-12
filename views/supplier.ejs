@@ -10,18 +10,33 @@
 		<li><a href="/suppliers">Suppliers</a></li>
 	</ul>
 	<p><a href="/suppliers/add">Add Suppliers</a></p>
-	<table>
+	<table width="600" border="1">
 		<th>ID</th>
 		<th>Kota</th>
 		<th>Name</th>
 		<th>Items</th>
+		<th>Add Item</th>
 		<th>Action</th>
 		<%data.forEach(i => {%>
 		<tr>
 			<td><%-i.id%></td>
 			<td><%-i.name%></td>
 			<td><%-i.kota%></td>
-			<td><%-i.item_name%></td>
+			<td>
+			<%
+			if(i.item_name.length!=0){
+				i.item_name.forEach((j,no) => 
+				{%>
+				<%-no+1%>. <%-j%><br>
+				<%})
+			}else{
+			%>
+			No Item Yet
+			<%
+			}
+			%>
+			</td>
+			<td><a href="/suppliers/assign/<%-i.id%>">Assign Item</td>
 			<td><a href="/suppliers/edit/<%-i.id%>">Edit</td>
 			<td><a href="/suppliers/delete/<%-i.id%>">Delete</td>
 		</tr>
