@@ -11,6 +11,13 @@ module.exports = (sequelize, DataTypes) => {
             return next()
           } else {
             return next("Code Item harus diawali dengan HP | SW | LP dan diikuti dengan 4 digit angka");
+          },
+          isUnique: function(value, next) {
+            Item.findOne({
+              where: {
+
+              }
+            })
           }
         }
       }
