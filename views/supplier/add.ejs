@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ../partial/head%>
+</head>
+
+<body>
+    <%- include ../partial/menubar%>
+        <div class="container">
+            <h1>List Supplier</h1>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Name</th>
+                        <th>Kota</th>
+                        <th>Action</th>
+                    </thead>
+                        <tbody>
+                            <form action="/supplier/add" method="post">
+                                <td>
+                                    <input type="text" name="name" placeholder="type name">
+                                </td>
+                                <td>
+                                   <input type="text" name="kota" placeholder="type kota">
+                                </td>
+                                <td>
+                                    <input type="submit" value="SAVE">
+                                    <a href="/supplier" class="btn btn-danger" role="button">Cancel</a>
+                                </td>
+                            </form>
+                        </tbody>
+                </table>
+            </div>
+
+        </div>
+</body>
+
+</html>
