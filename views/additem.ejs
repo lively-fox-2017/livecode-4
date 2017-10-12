@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Code Item</th>
+      </thead>
+      <tbody>
+        <form action="/item/add" method="post">
+          <tr>
+            <td><input type="text" name="name" placeholder="Name"</td>
+            <td><input type="text" name="brand" placeholder="Brand"</td>
+            <td><input type="text" name="codeitem" placeholder="CodeItem"</td>
+            <td><input type="submit" value="Submit"></td>
+          </tr>
+        </form>
+        <%if(err){%>
+          <div class="alert">
+             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             This is an alert box.
+            </div>
+          <%}%>
+      </tbody>
+    </table>
+  </body>
+</html>

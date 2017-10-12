@@ -18,7 +18,10 @@
             <td><%=dataSup.id%></td>
             <td><%=dataSup.name%></td>
             <td><%=dataSup.kota%></td>
-            <td><a href="/supplier/add">add</a></td>
+              <td><a href="/supplier/add">add</a>
+              <a href="/supplier/edit/<%=dataSup.id%>">Edit</a>
+              <a href="/supplier/delete/<%=dataSup.id%>">Delete</a></td>
+
           </tr>
           <%})%>
       </tbody>

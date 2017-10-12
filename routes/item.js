@@ -3,59 +3,65 @@ const router= express.Router()
 const model= require ('../models')
 
 router.get('/',(req,res)=>{
-  model.Supplier.findAll()
-  .then(dataSupplier=>{
+  model.Item.findAll()
+  .then(dataItem=>{
     // res.send('masuk')
-    res.render('supplier',{dataSupplier:dataSupplier})
+    res.render('item',{dataItem:dataItem})
   })
 })
 
 router.get('/add',(req,res)=>{
     // res.send('oi')
-    res.render('addsupplier')
-    // ,{dataSupplier:dataSupplier})
+    res.render('additem')
+    // ,{dataItem:dataItem})
   // })
 })
 
 router.post('/add',(req,res)=>{
-  model.Supplier.create({
+  model.Item.create({
     name:req.body.name,
-    kota:req.body.kota
+    brand:req.body.brand,
+    codeitem:req.body.codeitem
   })
   .then(()=>{
     // res.send('oi')
-    res.redirect('/supplier')
+    res.redirect('/item')
+  })
+  .catch(err=>{
+    // res.redirect('/item',err:null)
+    res.send(err)
   })
 })
 
 router.get('/delete/:id',(req,res)=>{
-  model.Supplier.destroy({
+  model.Item.destroy({
     where:{id:req.params.id}
   })
-  .then(dataSupplier=>{
-    res.redirect('/supplier')
+  .then(dataItem=>{
+    res.redirect('/item')
   })
 })
 
 router.get('/edit/:id',(req,res)=>{
-  model.Supplier.findAll({
+  model.Item.findAll({
     where:{id:req.params.id}
   })
-  .then(dataSupplier=>{
-    res.render('editsupplier',{dataSupplier:dataSupplier[0]})
+  .then(dataItem=>{
+    res.render('edititem',{dataItem:dataItem[0]})
   })
 })
 
 router.post('/edit/:id',(req,res)=>{
-  model.Supplier.update({
+  model.Item.update({
     name:req.body.name,
-    kota:req.body.kota
+    brand:req.body.brand,
+    codeitem:req.body.codeitem
   },{where:{
     id:req.params.id}
     })
     .then(()=>{
       // res.send('jajal')
-      res.redirect('/supplier')
+      res.redirect('/item')
     })
 })
 module.exports = router;
