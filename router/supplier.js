@@ -7,6 +7,7 @@ router.get('/', (req,res) => {
         include: [{model: models.Item}]
     })
     .then((data) => {
+        // res.send(data)
         // console.log(data[0].Items[0].SupplierItem.dataValues.price)
         // res.send(data[0].Items[0].SupplierItem)
         res.render('supplier', {data:data})
@@ -71,18 +72,13 @@ router.get('/delete/:id', (req,res) => {
 
 
 router.get('/assign/:id', (req,res) => {
-    models.Suppliers.findAll({
-        include: [{model: models.Item}]
-    }, {
-        where: {
-            id: `${req.params.id}`
-        }
-    })
+    models.Suppliers.findById(req.params.id)
     .then(data => {
         models.Item.findAll()
         .then(items => {
             // res.send(items)
-            res.render('assignItem', {data: data[0], items: items})
+            // res.send(data)
+            res.render('assignItem', {data: data, items: items})
         })
     })
 })

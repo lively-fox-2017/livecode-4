@@ -1,5 +1,6 @@
 <html>
         <body>
+            <%- include ./partial/menu.ejs%>
             <form action="/suppliers/assign/<%=data.id%>" method='post'>
                 <select name='itemId'>
                     <%items.forEach(d => {%>

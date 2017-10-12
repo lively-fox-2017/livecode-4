@@ -1,6 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Suppliers = sequelize.define('Suppliers', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+  },
     name: DataTypes.STRING,
     kota: DataTypes.STRING
   }, {

@@ -42,17 +42,17 @@ router.post('/search', (req,res) => {
                 model: models.Item,
                 where: {
                     name: {
-                        $iLike: '%phone'
+                        $ilike : `%${req.body.name}%` 
                     }
                 }
             }], where: {
-                price: {
-                    $between: [min, max]
-                }
+                    price: {
+                        $between: [min, max]
+                    }
             }
         })
         .then((data) => {
-            res.send(data)
+            res.render('search', {data:data})
         })
     }
 })

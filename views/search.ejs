@@ -1,9 +1,28 @@
 <html>
+    <head>
+        <script>
+            function formatuang (number){
+                reverse = number.toString().split('').reverse();
+                arr= [];
+                for(var i = 0; i<reverse.length;i++){
+                    if((i+1) % 3 === 0 && (i+1) !== reverse.length){
+                    arr.push(reverse[i]);
+                    arr.push('.');
+                    }else{
+                    arr.push(reverse[i]);
+                    }
+                }
+                document.write('Rp. '+arr.reverse().join(''))
+                // return 'Rp. '+arr.reverse().join('');
+                }
+            </script>
+    </head>
         <body>
+                <%- include ./partial/menu.ejs%>
                 <form action="/item/search" method='post'>
-                    <input type='text' name='name'>
-                    <input type='text' name='minPrice'>
-                    <input type='text' name='maxPrice'>
+                    <input type='text' name='name' placeholder='name search'>
+                    <input type='text' name='minPrice' placeholder='min Price'>
+                    <input type='text' name='maxPrice' placeholder='max Price'>
                     <input type='submit' value='submit'>
                 </form>
             <table>
@@ -18,11 +37,10 @@
                             <td></td>
                             <td><%=d.Item.name%></td>
                             <td><%=d.Supplier.name%></td>
-                            <td><%=d.price%></td>
+                            <td><script>formatuang(`<%=d.price%>`)</script></td>
                         </tr>
                     <%})%>
             </table>
-            <a href='/item/add'>Add an item</a>
             <a href='/'>Home</a>
         </body>
     </html>
