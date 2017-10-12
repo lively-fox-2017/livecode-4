@@ -1,0 +1,47 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <div><h1>List Item</h1></div>
+        <div><a href="/item/addItem">Add Item</a></div>
+        <table border="1">
+        	<tr>
+        		<th>ID</th>
+        		<th>Name</th>
+        		<th>Brand</th>
+                <th>Code Item</th>
+        		<th>Action</th>
+        	</tr>
+        	<% resultItem.forEach(item=>{%>
+        	<tr>
+        		<td><%= item.id%></td>
+        		<td><%= item.name%></td>
+        		<td><%= item.brand%></td>
+                <td><%= item.codeitem%></td>
+        		<td>
+                    <a href="/item/editItem/<%= item.id%>">Edit</a>
+                    <a href="/item/deleteItem/<%= item.id%>">Delete</a>
+                </td> 
+        	</tr>
+        	<%})%>
+        </table>
+    </div>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>

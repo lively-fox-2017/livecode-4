@@ -1,0 +1,45 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <div><h1>List Supplier</h1></div>
+        <div><a href="/suplier/addSup">Add Suplier</a></div>
+        <table border="1">
+        	<tr>
+        		<th>ID</th>
+        		<th>Name</th>
+        		<th>Kota</th>
+        		<th>Action</th>
+        	</tr>
+        	<% resultSuplier.forEach(sup=>{%>
+        	<tr>
+        		<td><%= sup.id%></td>
+        		<td><%= sup.name%></td>
+        		<td><%= sup.kota%></td>
+        		<td>
+                    <a href="/suplier/editSup/<%= sup.id%>">Edit</a>
+                    <a href="/suplier/deleteSup/<%= sup.id%>">Delete</a>
+                </td> 
+        	</tr>
+        	<%})%>
+        </table>
+    </div>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>

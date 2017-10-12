@@ -1,0 +1,30 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Edit Supplier</h1>
+        <form action="/suplier/updateSup/<%= resultSup.id%>" method="POST">
+                <input type="text" value=<%= resultSup.name%> name="name">
+                <input type="text" value=<%= resultSup.kota%> name="kota">
+                <button type="submit">Submit</button>
+         </form>
+    </div>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>

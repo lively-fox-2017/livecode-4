@@ -1,0 +1,31 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Edit Item</h1>
+        <form action="/item/editItem/<%= resultItem.id%>" method="POST">
+                <input type="text" value=<%= resultItem.name%> name="name">
+                <input type="text" value=<%= resultItem.brand%> name="brand">
+                <input type="text" value=<%= resultItem.codeitem%> name="codeitem">
+                <button type="submit">Submit</button>
+         </form>
+    </div>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>
