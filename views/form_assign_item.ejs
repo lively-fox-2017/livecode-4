@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Add Item Supplier</title>
+</head>
+
+<body>
+  <% include partials/header.ejs %>
+  <h1>Add Item for Supplier<h1>
+    <table border='1'>
+      <tr>
+        <td>Name</td>
+        <td><%= dataSupplier.name %></td>
+      </tr>
+      <tr>
+        <td>City</td>
+        <td><%= dataSupplier.kota %></td>
+      </tr>
+      <tr>
+        <td>Adress</td>
+        <td></td>
+      </tr>
+    </table>
+    <form action="/suppliers/<%= dataSupplier.id %>/additem" method="post">
+      <select name="ItemId">
+        <% dataItem.forEach((item)=>{
+        %>
+
+        <option value="<%= item.id %>"><%= item.brand + ' ' + item.name %></option>
+      <%
+    })
+    %>
+      </select>
+      <input type="number" name="price" placeholder="480000000">
+      <input type="submit" value="SUBMIT">
+    </form>
+  </body>
+</html>

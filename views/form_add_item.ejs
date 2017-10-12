@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Item</title>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% if(hasOwnProperty('message'))
+    {
+      %>
+      <h2>
+        <%= message %>
+      </h2>
+    <%
+   }
+   else{}
+   %>
+    <form action="/items/add" method="post">
+      Name : <input type="text" name="name" placeholder="Name"><br />
+      Brand : <input type="text" name="brand" placeholder="Brand"><br />
+      Code Item : <input type="text" name="codeitem" placeholder="Code Item"><br />
+      <input type="submit" value="SUBMIT"><a href="/items"><a href="/items">Cancel</a>
+    </form>
+  </body>
+</html>

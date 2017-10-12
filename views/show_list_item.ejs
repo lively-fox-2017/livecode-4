@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>List Item</title>
+  </head>
+  <body>
+<% include partials/header.ejs %>
+    <% if(hasOwnProperty('message'))
+    {
+      %>
+      <h2>
+        <%= message %>
+      </h2>
+    <%
+   }
+   else{}
+   %>
+    <table border="5">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Code Item</th>
+        <th>List Supplier</th>
+        <th>Action</th>
+      </tr>
+      <%
+        for(var i =0;i<dataItem.length;i++){
+          %>
+          <tr>
+            <td>
+              <%= dataItem[i].id %>
+            </td>
+            <td>
+              <%= dataItem[i].name %>
+            </td>
+            <td>
+              <%= dataItem[i].brand %>
+            </td>
+            <td>
+              <%= dataItem[i].codeitem %>
+            </td>
+            <td>
+            <%
+            if(dataItem[i].listsupplier.length > 0){
+            %>
+              <ul>
+                <%
+                  dataItem[i].listsupplier.forEach((supplier)=>{
+                %>
+                  <li>
+                    <%= supplier.name + " @ "+ supplier.harga %>
+                  </li>
+                  <%
+                })
+
+                %>
+              </ul>
+            <%
+            } else {
+            %>
+            No Supplier Yet
+            <%}%>
+            </td>
+            <td>
+              <a href="/items/edit/<%= dataItem[i].id %>"> Edit </a>|
+              <a href="/items/delete/<%= dataItem[i].id %>"> Delete </a>
+            </td>
+          </tr>
+          <%
+        }
+      %>
+    </table>
+    <a href="/items/add">Add new Items</a>
+  </body>
+</html>
