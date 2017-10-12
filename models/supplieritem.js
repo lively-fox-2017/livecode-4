@@ -12,9 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  SupplierItem.associate = function(models){
-    SupplierItem.belongsToMany(models: models.Item, { through: 'SupplierItem' })
-  }
+  // SupplierItem.associate = function(models){
+  //   SupplierItem.hasMany(models: models.Item)
+  //   SupplierItem.hasMany(models: models.Supplier)
+  // }
 
 
   return SupplierItem;

@@ -7,6 +7,7 @@ router.get('/', (req, res)=>{
   model.Supplier.findAll()
   .then(suppliers => {
     res.render('suppliers', {suppliers: suppliers})
+    // res.send(suppliers)
   })
   .catch(err =>{
     console.log(err);
@@ -82,14 +83,15 @@ router.get('/delete/:id', (req, res)=>{
 //
 
 //associate
-router.get('/:id/addprice', (req, res)=>{
+router.get('/:id/additem', (req, res)=>{
   model.Supplier.findAll({
     where: {id: `${req.params.id}`}
   })
   .then(supplier => {
     model.Item.findAll()
     .then(item => {
-      res.render('SupplierItem', {supplier: supplier, item: subject, item: 'Add Price'})
+      res.send()
+      // res.render('SupplierItem', {supplier: supplier, item: subject, item: 'Add Price'})
     })
     .catch(err =>{
       console.log(err);
@@ -100,7 +102,7 @@ router.get('/:id/addprice', (req, res)=>{
   })
 })
 
-router.post('/:id/addprice', (req, res)=>{
+router.post('/:id/additem', (req, res)=>{
   model.SupplierItem.create({
     StudentId: `${req.params.id}`,
     SubjectId: `${req.body.SubjectId}`,

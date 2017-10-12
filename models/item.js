@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             unique: {
                 args: true,
                 message: 'Code Item harus Unik',
-            }
+            },
             validate: {
                 len: {
                     args: /(HP|SW|LP)\d{4}/,
@@ -26,9 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-    Item.associate = function(models){
-      Item.belongsToMany(models: models.Supplier, { through: 'SupplierItem' })
-    }
+    // Item.associate = function(models){
+    //   Item.belongsToMany(models.Supplier, { through: 'SupplierItem' })
+    // }
 
 
 

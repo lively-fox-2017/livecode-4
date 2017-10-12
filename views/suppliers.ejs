@@ -51,6 +51,8 @@
               <th>No</th>
               <th>Name</th>
               <th>Kota</th>
+              <th>List Item</th>
+              <th>Assign Item</th>
               <th>Options</th>
             </thead>
             <% var i = 1
@@ -59,9 +61,11 @@
               <td><%= i %></td>
               <td><%= item.name%></td>
               <td><%= item.kota %></td>
-
               <td>
-
+                <% %>
+              </td>
+              <td>Assign Item</td>
+              <td>
                 <a href="/suppliers/edit/<%= item.id %>">Edit</a> |
                 <a href="/suppliers/delete/<%= item.id %>" onclick="return confirm('delete this Supplier?')">Delete</a>
               </td>
