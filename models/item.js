@@ -6,8 +6,10 @@ module.exports = (sequelize, DataTypes) => {
     codeItem: {
       type: DataTypes.STRING,
       validate: {
-        is: /(HP|SW|LP)\d{4}/, // Berformat yang benar, [2huruf (HP|SW|LP)][4angka] contoh: ‘HP1234’
-        msg: 'Code Item harus diawali dengan HP | SW | LP dan diikuti dengan 4 digit angka'
+        is: {
+          args: /(HP|SW|LP)\d{4}/,
+          msg: 'Code Item harus diawali dengan HP | SW | LP dan diikuti dengan 4 digit angka'
+        }
       },
       unique: {
         msg: 'Code Item harus Unik'
@@ -20,6 +22,12 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+
+  Item.associate = models => {
+    // Item.belongsToMany(models.Supplier, {through: 'SupplierItem'})
+    // Item.hasMany(models.Supplier)
+  }
+
   return Item;
 };
 

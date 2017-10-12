@@ -32,7 +32,7 @@ router.post('/add', function(req, res) {
 	}).catch(err => {
 		console.log(err)
 		// res.render('items/add', {err: err})
-		res.send(err)
+		res.send(err.errors[0].message)
 	})
 })
 
@@ -47,6 +47,10 @@ router.post('/edit/:id', function(req, res) {
 	console.log(req.body, req.params.id)
 	Models.Item.update(req.body, {where: req.params}).then(() => {
 		res.redirect('/items')
+	}).catch(err => {
+		console.log(err)
+		// res.render('items/add', {err: err})
+		res.send(err.errors[0].message)
 	})
 })
 
