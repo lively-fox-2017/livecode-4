@@ -1,4 +1,5 @@
 'use strict';
+var model = require('../models');
 module.exports = (sequelize, DataTypes) => {
   var Item = sequelize.define('Item', {
     name: DataTypes.STRING,
@@ -37,5 +38,13 @@ module.exports = (sequelize, DataTypes) => {
     Item.belongsToMany(models.Supplier, {through: 'SupplierItem'})
     Item.hasMany(models.SupplierItem);
   };
+  Item.beforeDestroy((user, options)=>{
+    console.log(user, 'ababababasfuhjsifdughsiud');
+    // model.SupplierItem.destroy({
+    //   where:{
+    //     itemId: user.id
+    //   }
+    // })
+  })
   return Item;
 };

@@ -1,4 +1,5 @@
 'use strict';
+const formatuang = require('../helpers/formatUang');
 module.exports = (sequelize, DataTypes) => {
   var SupplierItem = sequelize.define('SupplierItem', {
     SupplierId: DataTypes.INTEGER,
@@ -9,5 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     SupplierItem.belongsTo(models.Item)
     SupplierItem.belongsTo(models.Supplier)
   };
+  SupplierItem.formatUang = function() {
+    return formatuang(this.price);
+  }
   return SupplierItem;
 };

@@ -5,9 +5,7 @@
     <title>List Item</title>
   </head>
   <body>
-    <a href="/">Home</a>
-    <a href="/suppliers">Suppliers</a>
-    <a href="/items">Items</a>
+<% include partials/header.ejs %>
     <% if(hasOwnProperty('message'))
     {
       %>
@@ -24,6 +22,7 @@
         <th>Name</th>
         <th>Brand</th>
         <th>Code Item</th>
+        <th>List Supplier</th>
         <th>Action</th>
       </tr>
       <%
@@ -41,6 +40,28 @@
             </td>
             <td>
               <%= dataItem[i].codeitem %>
+            </td>
+            <td>
+            <%
+            if(dataItem[i].listsupplier.length > 0){
+            %>
+              <ul>
+                <%
+                  dataItem[i].listsupplier.forEach((supplier)=>{
+                %>
+                  <li>
+                    <%= supplier.name + " @ "+ supplier.harga %>
+                  </li>
+                  <%
+                })
+
+                %>
+              </ul>
+            <%
+            } else {
+            %>
+            No Supplier Yet
+            <%}%>
             </td>
             <td>
               <a href="/items/edit/<%= dataItem[i].id %>"> Edit </a>|

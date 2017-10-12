@@ -1,42 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>List Supplier</title>
-  </head>
-  <body>
-    <a href="/">Home</a>
-    <a href="/suppliers">Suppliers</a>
-    <a href="/items">Items</a>
-    <table border="5">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Kota</th>
-        <th>Action</th>
-      </tr>
-      <%
+
+<head>
+  <meta charset="utf-8">
+  <title>List Supplier</title>
+</head>
+
+<body>
+<% include partials/header.ejs %>
+  <table border="5">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Kota</th>
+      <th>List Item</th>
+      <th>Action</th>
+    </tr>
+    <%
         for(var i =0;i<dataSupplier.length;i++){
           %>
-          <tr>
-            <td>
-              <%= dataSupplier[i].id %>
-            </td>
-            <td>
-              <%= dataSupplier[i].name %>
-            </td>
-            <td>
-              <%= dataSupplier[i].kota %>
-            </td>
-            <td>
-              <a href="/suppliers/edit/<%= dataSupplier[i].id %>"> Edit </a>|
-              <a href="/suppliers/delete/<%= dataSupplier[i].id %>"> Delete </a>
-            </td>
-          </tr>
+      <tr>
+        <td>
+          <%= dataSupplier[i].id %>
+        </td>
+        <td>
+          <%= dataSupplier[i].name %>
+        </td>
+        <td>
+          <%= dataSupplier[i].kota %>
+        </td>
+        <td>
           <%
+          if(dataSupplier[i].listitem.length > 0){
+          %>
+            <ul>
+              <%
+                dataSupplier[i].listitem.forEach((item)=>{
+              %>
+                <li>
+                  <%= item.brand + " " + item.name + " @ "+ item.harga %>
+                </li>
+                <%
+              })
+
+              %>
+            </ul>
+          <%
+        } else {
+          %>
+          No Item Yet
+          <%}%>
+        </td>
+        <td>
+          <a href="/suppliers/<%= dataSupplier[i].id %>/additem"> Assign Item </a>|
+          <a href="/suppliers/edit/<%= dataSupplier[i].id %>"> Edit </a>|
+          <a href="/suppliers/delete/<%= dataSupplier[i].id %>"> Delete </a>
+        </td>
+      </tr>
+      <%
         }
       %>
-    </table>
-    <a href="/suppliers/add">Add new Suppliers</a>
-  </body>
+  </table>
+  <a href="/suppliers/add">Add new Suppliers</a>
+</body>
+
 </html>

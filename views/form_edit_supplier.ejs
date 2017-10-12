@@ -5,6 +5,7 @@
     <title>Edit Supplier</title>
   </head>
   <body>
+    <% include partials/header.ejs %>
     <form action="/suppliers/edit/<%= dataSupplier.id %>" method="post">
       Name : <input type="text" name="name" placeholder="Name" value="<%= dataSupplier.name %>"><br />
       Kota : <input type="text" name="kota" placeholder="Kota" value="<%= dataSupplier.kota %>"><br />

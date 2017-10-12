@@ -1,12 +1,38 @@
 const express = require('express');
 const router = express.Router();
 const model = require('../models')
+const formatuang = require('../helpers/formatUang');
 
 router.get('/', function(req, res) {
+  // model.Item.findAll().then((data) => {
+  //   res.render('show_list_item', {
+  //     dataItem: data
+  //   });
+  // }).catch((err) => {
+  //   console.log(err);
+  // })
   model.Item.findAll().then((data) => {
-    res.render('show_list_item', {
-      dataItem: data
-    });
+    var arr_prom = [];
+    data.forEach((item) => {
+      arr_prom.push(item.getSuppliers());
+    })
+    Promise.all(arr_prom).then((results) => {
+      results.forEach((result, index) => {
+        var arrSupplier = [];
+        if (result) {
+          result.forEach((supplier) => {
+            supplier.harga = formatuang(supplier.SupplierItem.price);
+            arrSupplier.push(supplier);
+          })
+          data[index]['listsupplier'] = arrSupplier;
+        }
+      })
+      res.render('show_list_item', {
+        dataItem: data
+      });
+    }).catch((err) => {
+      console.log(err);
+    })
   }).catch((err) => {
     console.log(err);
   })
