@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Supplier</title>
+  </head>
+  <body>
+    <h1>Items</h1>
+    <a href="/">Return to Home</a>
+    <table>
+      <thead>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Kota</th>
+        <th>List Items</th>
+        <th>Add Items</th>
+        <th>Options</th>
+      </thead>
+      <tbody>
+        <%let no=0; if (data){data.forEach(rows=>{no++%>
+          <tr>
+            <td><%=no%></td>
+            <td><%=rows.nama%></td>
+            <td><%=rows.kota%></td>
+            <td>
+              <%if (rows.Items.length == 0){%>
+                No item yet
+              <%} else {%>
+                  <%rows.Items.forEach(rowsItem=>{%>
+                  <%=rowsItem.name%><br>
+                <%})%>
+              <%}%>
+            </td>
+            <td><a href="/<%=rows.nama%>/add_item">Add Items</a></td>
+            <td>
+              <a href="/suppliers/edit/<%=rows.id%>">Edit</a>
+              <a href="#">|</a>
+              <a onclick="return confirm('are you sure to delete this data?')" href="/suppliers/delete/<%=rows.id%>">Delete</a>
+            </td>
+          </tr>
+        <%})}%>
+      </tbody>
+    </table>
+    <form class="" action="/suppliers/add" method="post">
+      Nama <br>
+      <input type="text" name="nama" value=""><br>
+      Kota <br>
+      <input type="text" name="kota" value=""><br>
+      <button type="submit" name="button">Add Data</button>
+    </form>
+  </body>
+</html>
