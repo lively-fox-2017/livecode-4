@@ -3,9 +3,9 @@ const router = express.Router()
 const Models = require('../models')
 
 router.get('/', (req, res)=>{
-	Models.Supplier.findAll().then(supplier=>{
-		// res.send(supplier)
-		res.render('supplier/list', {data:supplier})
+	Models.Supplier.findAll({include:Models.User}).then(supplier=>{
+		res.send(supplier)
+		// res.render('supplier/list', {data:supplier})
 	})
 })
 

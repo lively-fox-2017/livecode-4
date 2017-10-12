@@ -19,6 +19,7 @@
 	      <tr>
 	        <th>Nama</th>
 	        <th>Kota</th>
+	        <th>List Item</th>
 	        <th>Options</th>
 	      </tr>
 	    </thead>
@@ -26,6 +27,7 @@
 	    	<%data.forEach(supplier=>{%>
 	      <tr>
 	        <td><%=supplier.name%></td>
+	        <td><%=supplier.kota%></td>
 	        <td><%=supplier.kota%></td>
 	        <td><a href="/suppliers/delete/<%=supplier.id%>">Delete</a> | <a href="/suppliers/edit/<%=supplier.id%>">Edit</a></td>
 	      </tr>
