@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/items/edit/<%= Item[0].id %>" method="post">
+    Name<br>
+    <input type="text" name="name" value="<%= Item[0].name %>">
+    <br>
+    Brand<br>
+    <input type="text" name="brand" value="<%= Item[0].brand %>">
+    <br>
+    Code Item<br>
+    <input type="text" name="codeitem" value="<%= Item[0].codeitem %>">
+    <br>
+    Assign Supplier<br>
+    <select name="name">
+      <% for(let i = 0; i < Item.length; i++){%>
+      <option value="<%= Item[i].Supplier.id %>"><%= Item[i].Supplier.name %></option>
+      <% } %>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

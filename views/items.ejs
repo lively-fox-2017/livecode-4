@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Code Item</th>
+    </tr>
+    <% for(let i = 0; i < Item.length; i++){%>
+    <tr>
+      <td><%= Item[i].id %></td>
+      <td><%= Item[i].name %></td>
+      <td><%= Item[i].brand %></td>
+      <td><%= Item[i].codeitem %></td>
+      <td><a href="/items/edit/<%= Item[i].id %>">Edit</a></td>
+      <td><a href="/items/delete/<%= Item[i].id %>">Delete</a></td>
+    </tr>
+    <% } %>
+  </table>
+</body>
+</html>
