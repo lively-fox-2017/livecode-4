@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Suppliers</title>
+  </head>
+  <body>
+    <table>
+      <form action="/suppliers/edit/<%= dataSupplier.id %>" method="post">
+        Name:<br>
+        <input type="text" name="name" value="<%= dataSupplier.name %>">
+        <br>
+        Kota:<br>
+        <input type="text" name="kota" value="<%= dataSupplier.kota %>">
+        <br>
+        <input type="submit" value="Submit">
+      </form>
+    </table>
+  </body>
+</html>
