@@ -3,7 +3,9 @@ const router = express.Router();
 const model = require('../models');
 
 router.get('/', (req, res) => {
-  model.Supplier.findAll()
+  model.Supplier.findAll({
+      include: ['Supplieritems']
+    })
     .then(suppliers => {
       res.render('show_list_suppliers', {
         title: 'List Suppliers',
@@ -64,6 +66,39 @@ router.get('/delete/:id', (req, res) => {
     })
     .then(() => {
       res.redirect('/suppliers');
+    })
+});
+
+router.get('/:id/additem', (req, res) => {
+  Promise.all([
+      model.Supplier.findOne({
+        where: {
+          id: req.params.id,
+        },
+        include: ['Supplieritems']
+      }),
+      model.Item.findAll()
+    ])
+    .then(values => {
+      res.render('form_add_item_supplier', {
+        title: 'Edit Suppliers',
+        supplier: values[0],
+        items: values[1]
+      });
+    })
+});
+
+router.post('/:id/additem', (req, res) => {
+  model.Supplieritem.create({
+      supplierId: req.params.id,
+      itemId: req.body.item,
+      price: req.body.price
+    })
+    .then(inserted => {
+      res.redirect(`/suppliers/${req.params.id}/additem`);
+    })
+    .catch(reason => {
+      console.log(reason);
     })
 });
 

@@ -11,6 +11,7 @@
     </div>
     <form action="<%= aksi %>" method="post">
       <table>
+        <input type="hidden" name="id" value="<%= item ? item.id : "" %>">
         <tr>
           <td>Name</td>
           <td>:</td>

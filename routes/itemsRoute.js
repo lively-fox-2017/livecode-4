@@ -44,11 +44,7 @@ router.get('/edit/:id', (req, res) => {
 });
 
 router.post('/edit/:id', (req, res) => {
-  model.Item.update({
-      name: req.body.name,
-      brand: req.body.brand,
-      codeitem: req.body.codeitem,
-    }, {
+  model.Item.update(req.body, {
       where: {
         id: req.params.id
       }
@@ -57,7 +53,8 @@ router.post('/edit/:id', (req, res) => {
       res.redirect('/items');
     })
     .catch(reason => {
-      res.redirect('/items/edit/' + req.params.id + '?err=' + encodeURIComponent(reason.message));
+      let err = reason.message.split("Validation error: ");
+      res.redirect('/items/edit/' + req.params.id + '?err=' + encodeURIComponent(err[1]));
     });
 });
 

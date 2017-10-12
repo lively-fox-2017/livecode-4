@@ -14,6 +14,8 @@
         <th>ID</th>
         <th>Name</th>
         <th>Kota</th>
+        <th>List Item</th>
+        <th>Add Item</th>
         <th>Action</th>
       </tr>
       <% suppliers.forEach((supplier, index) => { %>
@@ -21,6 +23,19 @@
           <td><%= supplier.id %></td>
           <td><%= supplier.name %></td>
           <td><%= supplier.kota %></td>
+          <td>
+              <% if(supplier.Supplieritems.length != 0) { %>
+                <ul>
+                <% supplier.Supplieritems.forEach(supitem => { %>
+                  <li><%= supitem %></li>
+                <% }) %>
+                </ul>
+              <% } else { %>
+                No Item Yet
+              <% } %>
+
+          </td>
+          <td><a href="/suppliers/<%= supplier.id  %>/additem"><button type="button" name="button">Assign Item</button></a></td>
           <td>
             <a href="/suppliers/edit/<%= supplier.id  %>"><button type="button" name="button">Edit</button></a>
             <a href="/suppliers/delete/<%= supplier.id  %>"><button type="button" name="button">Delete</button></a>

@@ -11,14 +11,23 @@ module.exports = (sequelize, DataTypes) => {
             return next()
           } else {
             return next("Code Item harus diawali dengan HP | SW | LP dan diikuti dengan 4 digit angka");
-          },
-          isUnique: function(value, next) {
-            Item.findOne({
+          }
+        },
+        isUnique: function(value, next) {
+          Item.find({
               where: {
-
+                codeitem: value,
+                id: {
+                  [sequelize.Op.not]: this.id
+                }
               }
             })
-          }
+            .then(items => {
+              if (items)
+                return next('Code Item harus Unik');
+              else
+                return next();
+            })
         }
       }
     }
