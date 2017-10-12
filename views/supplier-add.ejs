@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<% if (hasOwnProperty('err')) {%>
+	<p><%=JSON.stringify(err, null, 4)%></p>
+<%}%>
+<form action="/suppliers/add" method="POST">
+	Name:<br><input type="text" name="name">
+	<br>
+	Kota:<br><input type="text" name="kota">
+	<br>
+	<br>
+	<input type="submit" value="Add Supplier">
+</form>
+<%- include('partials/footer') %>

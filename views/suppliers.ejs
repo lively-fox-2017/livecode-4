@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+<% if (hasOwnProperty('err')) {%>
+	<p><%=JSON.stringify(err, null, 4)%></p>
+<%}%>
+
+<div>
+	<h2>LIST OF SUPPLIERS</h2>
+	<a href="/suppliers/add">Add Supplier</a>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Kota</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%suppliers.forEach(supplier => {%>
+			<tr>
+				<td><%=supplier.id%></td>
+				<td><%=supplier.name%></td>
+				<td><%=supplier.kota%></td>
+				<td>
+					<a href="/suppliers/edit/<%=supplier.id%>">Edit</a>
+					<a href="/suppliers/delete/<%=supplier.id%>">Delete</a>
+				</td>
+			</tr>
+			<%})%>
+		</tbody>
+	</table>
+
+</div>
+<%- include('partials/footer') %>
