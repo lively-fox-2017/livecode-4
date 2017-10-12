@@ -13,23 +13,25 @@
 
 <main>
     <div class="jumbotron">
-        <div><h1>List Supplier</h1></div>
-        <div><a href="/suplier/addSup">Add Suplier</a></div>
+        <div><h1>List Item</h1></div>
+        <div><a href="/item/addItem">Add Item</a></div>
         <table border="1">
         	<tr>
         		<th>ID</th>
         		<th>Name</th>
-        		<th>Kota</th>
+        		<th>Brand</th>
+                <th>Code Item</th>
         		<th>Action</th>
         	</tr>
-        	<% resultSuplier.forEach(sup=>{%>
+        	<% resultItem.forEach(item=>{%>
         	<tr>
-        		<td><%= sup.id%></td>
-        		<td><%= sup.name%></td>
-        		<td><%= sup.kota%></td>
+        		<td><%= item.id%></td>
+        		<td><%= item.name%></td>
+        		<td><%= item.brand%></td>
+                <td><%= item.codeitem%></td>
         		<td>
-                    <a href="/suplier/editSup/<%= sup.id%>">Edit</a>
-                    <a href="/suplier/deleteSup/<%= sup.id%>">Delete</a>
+                    <a href="/item/editItem/<%= item.id%>">Edit</a>
+                    <a href="/item/deleteItem/<%= item.id%>">Delete</a>
                 </td> 
         	</tr>
         	<%})%>

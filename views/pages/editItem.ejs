@@ -13,10 +13,11 @@
 
 <main>
     <div class="jumbotron">
-        <h1>Add Supplier</h1>
-        <form action="/suplier/addSup" method="POST">
-                <input type="text" name="name" placeholder="Nama suplier">
-                <input type="text" name="kota" placeholder="Nama Kota">
+        <h1>Edit Item</h1>
+        <form action="/item/editItem/<%= resultItem.id%>" method="POST">
+                <input type="text" value=<%= resultItem.name%> name="name">
+                <input type="text" value=<%= resultItem.brand%> name="brand">
+                <input type="text" value=<%= resultItem.codeitem%> name="codeitem">
                 <button type="submit">Submit</button>
          </form>
     </div>
